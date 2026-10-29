@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+/* Light = "Pop de calle", dark = deep charcoal with lime. */
+:root,
+[data-theme='light'] {
+  --background: #f7f5f2;
+  --surface: #ffffff;
+  --foreground: #14121a;
+  --muted: #5b5766;
+  --border: #e3dfd8;
+  --accent: #2b4bff;
+  --accent-foreground: #ffffff;
+  --sale: #e8362b;
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --background: #0f0f12;
+  --surface: #1a1a20;
+  --foreground: #f2eee6;
+  --muted: #a6a2ad;
+  --border: #2c2c35;
+  --accent: #c6f135;
+  --accent-foreground: #0f0f12;
+  --sale: #ff7a6b;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-sale: var(--sale);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+  --radius-card: 1.5rem;
+  --radius-panel: 1rem;
+  --radius-control: 0.75rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

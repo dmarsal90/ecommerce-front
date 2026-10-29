@@ -1,0 +1,6 @@
+{
+  "meta": { "title": "Sennitwo", "description": "Mode et chaussures avec livraison rapide" },
+  "nav": { "home": "Accueil", "shop": "Boutique", "cart": "Panier" },
+  "theme": { "toggle": "Basculer entre le mode clair et sombre" },
+  "language": { "label": "Langue" }
+}

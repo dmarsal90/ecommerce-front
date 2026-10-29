@@ -1,0 +1,6 @@
+{
+  "meta": { "title": "Sennitwo", "description": "Moda y calzado con envío rápido" },
+  "nav": { "home": "Inicio", "shop": "Tienda", "cart": "Carrito" },
+  "theme": { "toggle": "Cambiar entre modo claro y oscuro" },
+  "language": { "label": "Idioma" }
+}

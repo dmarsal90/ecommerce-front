@@ -16,5 +16,11 @@
   },
   "footer": {
     "rights": "Todos los derechos reservados."
+  },
+  "hero": {
+    "eyebrow": "Nueva temporada",
+    "title": "Viste la calle",
+    "subtitle": "Moda y calzado con entrega rápida.",
+    "cta": "Comprar ahora"
   }
 }

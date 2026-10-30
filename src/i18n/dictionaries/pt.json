@@ -16,5 +16,11 @@
   },
   "footer": {
     "rights": "Todos os direitos reservados."
+  },
+  "hero": {
+    "eyebrow": "Nova estação",
+    "title": "Veste a rua",
+    "subtitle": "Moda e calçado com entrega rápida.",
+    "cta": "Comprar agora"
   }
 }

@@ -16,5 +16,11 @@
   },
   "footer": {
     "rights": "Tutti i diritti riservati."
+  },
+  "hero": {
+    "eyebrow": "Nuova stagione",
+    "title": "Vesti la strada",
+    "subtitle": "Moda e calzature con consegna rapida.",
+    "cta": "Acquista ora"
   }
 }

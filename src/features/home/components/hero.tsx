@@ -10,7 +10,7 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         <p
           data-reveal
           data-reveal-fade
-          className="text-accent text-sm font-semibold tracking-widest uppercase"
+          className="text-accent-ink text-sm font-semibold tracking-widest uppercase"
         >
           {dict.hero.eyebrow}
         </p>

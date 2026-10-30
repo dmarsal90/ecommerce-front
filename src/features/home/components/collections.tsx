@@ -22,12 +22,12 @@ export function Collections({
           <li key={collection.id}>
             <Link
               href={`/${locale}/collections/${collection.slug}`}
-              className="bg-surface border-border rounded-card hover:border-accent flex h-full min-h-48 flex-col justify-end gap-1 border p-6 transition-colors"
+              className="bg-surface border-border rounded-card hover:border-accent-ink flex h-full min-h-48 flex-col justify-end gap-1 border p-6 transition-colors"
             >
               <h3 className="font-display text-2xl font-bold">{collection.name}</h3>
               {collection.description && <p className="text-muted">{collection.description}</p>}
               {collection.products_count !== undefined && (
-                <p className="text-accent text-sm font-semibold">
+                <p className="text-accent-ink text-sm font-semibold">
                   {dict.collections[
                     `items_${new Intl.PluralRules(locale).select(collection.products_count) === 'one' ? 'one' : 'other'}`
                   ].replace('{count}', String(collection.products_count))}

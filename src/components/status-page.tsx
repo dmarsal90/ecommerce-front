@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 export const statusAction =
-  'rounded-full border border-border px-5 py-2 font-semibold transition-colors hover:border-accent';
+  'rounded-full border border-border px-5 py-2 font-semibold transition-colors hover:border-accent-ink';
 export const statusPrimaryAction = 'bg-accent text-accent-foreground rounded-full px-5 py-2 font-semibold';
 
 export function StatusPage({
@@ -20,7 +20,7 @@ export function StatusPage({
   return (
     <section className="mx-auto flex min-h-[60dvh] max-w-xl flex-col items-center justify-center gap-4 py-16 text-center">
       {art}
-      <p aria-hidden className="font-display text-accent text-2xl font-bold tracking-widest">
+      <p aria-hidden className="font-display text-accent-ink text-2xl font-bold tracking-widest">
         {code}
       </p>
       <h1 className="font-display text-3xl font-bold md:text-4xl">

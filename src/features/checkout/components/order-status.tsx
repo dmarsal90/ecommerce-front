@@ -66,7 +66,7 @@ export function OrderStatus({
         ) : (
           <Link
             href={`/${locale}/shop`}
-            className="border-border hover:border-accent rounded-full border px-6 py-3 font-semibold"
+            className="border-border hover:border-accent-ink rounded-full border px-6 py-3 font-semibold"
           >
             {copy.continue_shopping}
           </Link>

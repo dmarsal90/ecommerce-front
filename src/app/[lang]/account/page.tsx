@@ -32,7 +32,7 @@ async function AccountContent({ locale }: { locale: Locale }) {
         <input type="hidden" name="locale" value={locale} />
         <button
           type="submit"
-          className="border-border hover:border-accent rounded-full border px-5 py-2 font-semibold"
+          className="border-border hover:border-accent-ink rounded-full border px-5 py-2 font-semibold"
         >
           {auth.account.logout}
         </button>

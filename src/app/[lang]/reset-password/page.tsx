@@ -31,7 +31,7 @@ async function ResetContent({
   if (typeof token !== 'string' || typeof email !== 'string') {
     return (
       <AuthShell title={auth.verify.invalid_title} intro={auth.errors.invalid_link}>
-        <Link href={`/${locale}/forgot-password`} className="text-accent underline">
+        <Link href={`/${locale}/forgot-password`} className="text-accent-ink underline">
           {auth.forgot.title}
         </Link>
       </AuthShell>

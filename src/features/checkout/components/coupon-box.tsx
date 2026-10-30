@@ -58,7 +58,7 @@ export function CouponBox({
         <button
           type="submit"
           disabled={pending || disabled}
-          className="border-border hover:border-accent rounded-full border px-5 py-2 font-semibold disabled:opacity-60"
+          className="border-border hover:border-accent-ink rounded-full border px-5 py-2 font-semibold disabled:opacity-60"
         >
           {copy.coupon_apply}
         </button>

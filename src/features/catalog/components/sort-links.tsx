@@ -24,7 +24,7 @@ export function SortLinks({
             key={sort}
             href={href}
             aria-current={current ? 'true' : undefined}
-            className={`rounded-full border px-3 py-1 text-sm ${current ? 'bg-foreground text-background border-foreground' : 'border-border hover:border-accent'}`}
+            className={`rounded-full border px-3 py-1 text-sm ${current ? 'bg-foreground text-background border-foreground' : 'border-border hover:border-accent-ink'}`}
           >
             {dict.shop[sort]}
           </ShopLink>

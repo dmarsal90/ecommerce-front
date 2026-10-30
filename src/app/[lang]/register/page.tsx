@@ -22,7 +22,7 @@ export default async function RegisterPage() {
       <RegisterForm locale={locale} copy={auth} />
       <p className="text-sm">
         {auth.register.have_account}{' '}
-        <Link href={`/${locale}/login`} className="text-accent underline">
+        <Link href={`/${locale}/login`} className="text-accent-ink underline">
           {auth.register.login}
         </Link>
       </p>

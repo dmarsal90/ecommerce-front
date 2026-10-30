@@ -75,7 +75,7 @@ export function VariantPicker({
                     onChange={() => setSelection({ ...selection, [group.slug]: value.slug })}
                     className="peer sr-only"
                   />
-                  <span className="border-border peer-checked:bg-foreground peer-checked:text-background peer-checked:border-foreground peer-focus-visible:outline-accent peer-disabled:text-muted flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-sm peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-disabled:cursor-not-allowed peer-disabled:line-through">
+                  <span className="border-border peer-checked:bg-foreground peer-checked:text-background peer-checked:border-foreground peer-focus-visible:outline-accent-ink peer-disabled:text-muted flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-sm peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-disabled:cursor-not-allowed peer-disabled:line-through">
                     {value.swatch && (
                       <span
                         aria-hidden

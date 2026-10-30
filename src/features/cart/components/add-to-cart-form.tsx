@@ -35,7 +35,7 @@ export function AddToCartForm({ productId, variantId, canAdd, locale, copy }: Ad
         {state.ok && !error && (
           <p>
             {copy.added}{' '}
-            <Link href={`/${locale}/cart`} className="text-accent underline">
+            <Link href={`/${locale}/cart`} className="text-accent-ink underline">
               {copy.view}
             </Link>
           </p>

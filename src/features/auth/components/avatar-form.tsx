@@ -8,7 +8,7 @@ import type { FormState } from '../domain/forms';
 import { Avatar } from './avatar';
 
 const button =
-  'border-border hover:border-accent rounded-full border px-4 py-2 text-sm font-semibold disabled:opacity-60';
+  'border-border hover:border-accent-ink rounded-full border px-4 py-2 text-sm font-semibold disabled:opacity-60';
 
 export function AvatarForm({
   user,

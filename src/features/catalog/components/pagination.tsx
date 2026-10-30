@@ -16,7 +16,7 @@ export function Pagination({
 }) {
   if (lastPage <= 1) return null;
   const href = (page: number) => `/${locale}/shop?${toUrlParams({ ...filters, page })}`;
-  const link = 'border-border hover:border-accent rounded-full border px-4 py-2 text-sm';
+  const link = 'border-border hover:border-accent-ink rounded-full border px-4 py-2 text-sm';
 
   return (
     <nav aria-label={dict.shop.pagination} className="mt-12 flex items-center justify-center gap-4">

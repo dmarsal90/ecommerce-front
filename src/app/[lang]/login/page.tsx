@@ -30,7 +30,7 @@ async function LoginContent({
       <LoginForm locale={locale} next={typeof next === 'string' ? next : undefined} copy={auth} />
       <p className="text-sm">
         {auth.login.no_account}{' '}
-        <Link href={`/${locale}/register`} className="text-accent underline">
+        <Link href={`/${locale}/register`} className="text-accent-ink underline">
           {auth.login.register}
         </Link>
       </p>

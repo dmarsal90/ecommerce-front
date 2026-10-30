@@ -22,5 +22,13 @@
     "title": "Kleide die Straße",
     "subtitle": "Mode und Schuhe mit schneller Lieferung.",
     "cta": "Jetzt shoppen"
+  },
+  "brands": {
+    "title": "Top-Marken"
+  },
+  "collections": {
+    "title": "Kollektionen",
+    "items_one": "{count} Artikel",
+    "items_other": "{count} Artikel"
   }
 }

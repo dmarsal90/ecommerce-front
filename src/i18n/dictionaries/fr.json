@@ -22,5 +22,13 @@
     "title": "Habille la rue",
     "subtitle": "Mode et chaussures livrées rapidement.",
     "cta": "Acheter maintenant"
+  },
+  "brands": {
+    "title": "Marques à la une"
+  },
+  "collections": {
+    "title": "Collections",
+    "items_one": "{count} article",
+    "items_other": "{count} articles"
   }
 }

@@ -22,5 +22,13 @@
     "title": "Viste la calle",
     "subtitle": "Moda y calzado con entrega rápida.",
     "cta": "Comprar ahora"
+  },
+  "brands": {
+    "title": "Marcas destacadas"
+  },
+  "collections": {
+    "title": "Colecciones",
+    "items_one": "{count} artículo",
+    "items_other": "{count} artículos"
   }
 }

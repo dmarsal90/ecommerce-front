@@ -7,7 +7,7 @@ export function SiteFooter({ dict }: { dict: Dictionary }) {
         <p className="text-foreground font-display font-bold">{dict.meta.title}</p>
         <p>{dict.meta.description}</p>
         <p className="mt-4">
-          © {new Date().getFullYear()} {dict.meta.title}. {dict.footer.rights}
+          © {dict.meta.title}. {dict.footer.rights}
         </p>
       </div>
     </footer>

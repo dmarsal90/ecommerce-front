@@ -16,5 +16,11 @@
   },
   "footer": {
     "rights": "Tous droits réservés."
+  },
+  "hero": {
+    "eyebrow": "Nouvelle saison",
+    "title": "Habille la rue",
+    "subtitle": "Mode et chaussures livrées rapidement.",
+    "cta": "Acheter maintenant"
   }
 }

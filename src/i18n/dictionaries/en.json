@@ -16,5 +16,11 @@
   },
   "footer": {
     "rights": "All rights reserved."
+  },
+  "hero": {
+    "eyebrow": "New season",
+    "title": "Dress the street",
+    "subtitle": "Fashion and footwear with fast delivery.",
+    "cta": "Shop now"
   }
 }

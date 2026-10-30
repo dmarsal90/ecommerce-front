@@ -5,11 +5,13 @@ export const statusAction =
 export const statusPrimaryAction = 'bg-accent text-accent-foreground rounded-full px-5 py-2 font-semibold';
 
 export function StatusPage({
+  art,
   code,
   title,
   text,
   children,
 }: {
+  art: ReactNode;
   code: string;
   title: string;
   text: string;
@@ -17,7 +19,8 @@ export function StatusPage({
 }) {
   return (
     <section className="mx-auto flex min-h-[60dvh] max-w-xl flex-col items-center justify-center gap-4 py-16 text-center">
-      <p aria-hidden className="font-display text-accent text-8xl font-bold md:text-9xl">
+      {art}
+      <p aria-hidden className="font-display text-accent text-2xl font-bold tracking-widest">
         {code}
       </p>
       <h1 className="font-display text-3xl font-bold md:text-4xl">

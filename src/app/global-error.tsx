@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { BrokenCableArt } from '@/components/status-art';
 import { StatusPage, statusPrimaryAction } from '@/components/status-page';
 import { defaultLocale, hasLocale } from '@/i18n/config';
 import { getStatusCopy } from '@/i18n/status';
@@ -15,7 +16,7 @@ export default function GlobalError({ retry }: { error: unknown; retry: () => vo
   return (
     <html lang={locale}>
       <body className="min-h-dvh p-4">
-        <StatusPage {...copy.error}>
+        <StatusPage art={<BrokenCableArt />} {...copy.error}>
           <button type="button" onClick={() => retry()} className={statusPrimaryAction}>
             {copy.retry}
           </button>

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { unstable_rethrow } from 'next/navigation';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/get-dictionary';
 import type { User } from '../domain/schemas';
@@ -13,6 +14,8 @@ export async function AccountMenu({ locale, dict }: { locale: Locale; dict: Dict
   try {
     user = await getCurrentUser();
   } catch (error) {
+    // Next signals "this needs the request" by throwing; swallowing that would break prerendering.
+    unstable_rethrow(error);
     console.warn('Could not load the current user for the header:', error);
   }
   if (!user) {

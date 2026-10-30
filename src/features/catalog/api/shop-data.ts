@@ -1,6 +1,5 @@
 import { cacheLife } from 'next/cache';
 import { ApiError, createApiClient } from '@/lib/api/client';
-import { orFallback } from '@/lib/api/fallback';
 import { env } from '@/lib/env';
 import type { ProductFilters } from '../domain/filters';
 import {
@@ -15,27 +14,42 @@ import { createProductsApi } from './products';
 const api = createApiClient(new URL('/api/', env.NEXT_PUBLIC_API_URL).href);
 const products = createProductsApi(api);
 
-// The cached loaders throw on failure (so errors are never cached); the exported getters turn that into a fallback.
-async function loadProductPage(filters: ProductFilters) {
-  'use cache';
-  cacheLife('minutes');
-  return products.list(filters);
+// Failures resolve to null so the shop can show an error message instead of crashing the route.
+async function safe<T>(request: Promise<T>): Promise<T | null> {
+  try {
+    return await request;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 }
 
-async function loadFilterOptions() {
+export async function getProductPage(filters: ProductFilters): Promise<ProductPage | null> {
   'use cache';
   cacheLife('minutes');
-  return products.filterOptions();
+  return safe(products.list(filters));
 }
 
-async function loadTaxonomy(path: 'categories' | 'brands') {
+export async function getFilterOptions(): Promise<FilterOptions> {
   'use cache';
   cacheLife('minutes');
-  return (await api.get(path, taxonomyListSchema)).data;
+  return (await safe(products.filterOptions())) ?? { colors: [], sizes: [] };
 }
 
-/** Unknown or inactive slugs are a cacheable null (a 404 page); real failures throw to the error boundary. */
-async function loadProduct(slug: string): Promise<Product | null> {
+export async function getCategories(): Promise<Taxonomy[]> {
+  'use cache';
+  cacheLife('minutes');
+  return (await safe(api.get('categories', taxonomyListSchema)))?.data ?? [];
+}
+
+export async function getBrands(): Promise<Taxonomy[]> {
+  'use cache';
+  cacheLife('minutes');
+  return (await safe(api.get('brands', taxonomyListSchema)))?.data ?? [];
+}
+
+/** Unknown or inactive slugs resolve to null (a 404 page); real failures still throw to the error boundary. */
+export async function getProduct(slug: string): Promise<Product | null> {
   'use cache';
   cacheLife('minutes');
   try {
@@ -46,23 +60,8 @@ async function loadProduct(slug: string): Promise<Product | null> {
   }
 }
 
-async function loadRelated(slug: string) {
+export async function getRelatedProducts(slug: string): Promise<Product[]> {
   'use cache';
   cacheLife('minutes');
-  return products.related(slug);
+  return (await safe(products.related(slug))) ?? [];
 }
-
-export const getProductPage = (filters: ProductFilters): Promise<ProductPage | null> =>
-  orFallback(() => loadProductPage(filters), null);
-
-export const getFilterOptions = (): Promise<FilterOptions> =>
-  orFallback(loadFilterOptions, { colors: [], sizes: [] });
-
-export const getCategories = (): Promise<Taxonomy[]> => orFallback(() => loadTaxonomy('categories'), []);
-
-export const getBrands = (): Promise<Taxonomy[]> => orFallback(() => loadTaxonomy('brands'), []);
-
-export const getProduct = (slug: string): Promise<Product | null> => loadProduct(slug);
-
-export const getRelatedProducts = (slug: string): Promise<Product[]> =>
-  orFallback(() => loadRelated(slug), []);

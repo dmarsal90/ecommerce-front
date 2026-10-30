@@ -67,5 +67,18 @@
     "next": "Successivo",
     "page": "Pagina {page} di {total}",
     "pagination": "Paginazione"
+  },
+  "product": {
+    "breadcrumb": "Percorso di navigazione",
+    "select_options": "Scegli un'opzione",
+    "in_stock": "Disponibile",
+    "low_stock": "Ne restano solo {count}",
+    "out_of_stock": "Esaurito",
+    "reviews": "Recensioni",
+    "no_reviews": "Ancora nessuna recensione.",
+    "verified": "Acquisto verificato",
+    "rating": "{rating} stelle su 5",
+    "related": "Potrebbe piacerti anche",
+    "details": "Dettagli"
   }
 }

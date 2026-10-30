@@ -67,5 +67,18 @@
     "next": "Next",
     "page": "Page {page} of {total}",
     "pagination": "Pagination"
+  },
+  "product": {
+    "breadcrumb": "Breadcrumb",
+    "select_options": "Select an option",
+    "in_stock": "In stock",
+    "low_stock": "Only {count} left",
+    "out_of_stock": "Out of stock",
+    "reviews": "Reviews",
+    "no_reviews": "No reviews yet.",
+    "verified": "Verified purchase",
+    "rating": "{rating} out of 5 stars",
+    "related": "You may also like",
+    "details": "Details"
   }
 }

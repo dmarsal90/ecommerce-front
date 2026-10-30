@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { Suspense } from 'react';
+import { AccountMenu } from '@/features/auth';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { ThemeToggle } from '@/components/theme/theme-toggle';
 import type { Locale } from '@/i18n/config';
@@ -14,6 +16,9 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
         <div className="flex items-center gap-2">
           <LanguageSwitcher current={locale} label={dict.language.label} />
           <ThemeToggle label={dict.theme.toggle} />
+          <Suspense>
+            <AccountMenu locale={locale} dict={dict} />
+          </Suspense>
         </div>
       </div>
     </header>

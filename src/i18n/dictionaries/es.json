@@ -80,5 +80,75 @@
     "rating": "{rating} de 5 estrellas",
     "related": "También te puede gustar",
     "details": "Detalles"
+  },
+  "auth": {
+    "menu": {
+      "login": "Entrar",
+      "account": "Cuenta"
+    },
+    "fields": {
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "password_confirmation": "Confirmar contraseña"
+    },
+    "login": {
+      "title": "Entrar",
+      "submit": "Entrar",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "no_account": "¿Primera vez?",
+      "register": "Crea una cuenta"
+    },
+    "register": {
+      "title": "Crea una cuenta",
+      "submit": "Crear cuenta",
+      "have_account": "¿Ya tienes cuenta?",
+      "login": "Entrar"
+    },
+    "forgot": {
+      "title": "¿Olvidaste tu contraseña?",
+      "intro": "Escribe tu correo y te enviaremos un enlace para elegir una nueva.",
+      "submit": "Enviar enlace",
+      "sent": "Si ese correo tiene una cuenta, el enlace va de camino.",
+      "back": "Volver a entrar"
+    },
+    "reset": {
+      "title": "Elige una nueva contraseña",
+      "submit": "Guardar contraseña",
+      "done": "Contraseña actualizada. Entra con tu nueva contraseña."
+    },
+    "verify": {
+      "pending_title": "Revisa tu bandeja de entrada",
+      "pending_text": "Te enviamos un enlace para verificar tu correo. Lo necesitas para hacer pedidos.",
+      "success_title": "Correo verificado",
+      "success_text": "¡Gracias! Ya puedes hacer pedidos.",
+      "already_title": "Ya verificado",
+      "already_text": "Este correo ya estaba verificado.",
+      "invalid_title": "Enlace no válido",
+      "invalid_text": "El enlace no es válido o ha caducado. Entra y pide uno nuevo.",
+      "resend": "Reenviar correo",
+      "resent": "Correo de verificación enviado.",
+      "continue": "Seguir comprando"
+    },
+    "account": {
+      "title": "Mi cuenta",
+      "hello": "Hola, {name}",
+      "verified": "Correo verificado",
+      "unverified": "Correo sin verificar",
+      "logout": "Salir"
+    },
+    "errors": {
+      "required": "Este campo es obligatorio.",
+      "email": "Escribe un correo válido.",
+      "min_password": "Usa al menos 8 caracteres.",
+      "mismatch": "Las contraseñas no coinciden.",
+      "too_long": "Es demasiado largo.",
+      "invalid_credentials": "Correo o contraseña incorrectos.",
+      "email_taken": "Ese correo ya está registrado.",
+      "throttled": "Demasiados intentos. Prueba de nuevo en un minuto.",
+      "generic": "Algo ha salido mal. Inténtalo de nuevo.",
+      "invalid_link": "El enlace no es válido o ha caducado. Pide uno nuevo.",
+      "not_logged_in": "Entra para continuar."
+    }
   }
 }

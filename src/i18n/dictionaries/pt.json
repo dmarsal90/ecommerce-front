@@ -80,5 +80,75 @@
     "rating": "{rating} de 5 estrelas",
     "related": "Também te pode interessar",
     "details": "Detalhes"
+  },
+  "auth": {
+    "menu": {
+      "login": "Entrar",
+      "account": "Conta"
+    },
+    "fields": {
+      "name": "Nome",
+      "email": "Email",
+      "password": "Palavra-passe",
+      "password_confirmation": "Confirmar palavra-passe"
+    },
+    "login": {
+      "title": "Entrar",
+      "submit": "Entrar",
+      "forgot": "Esqueceste-te da palavra-passe?",
+      "no_account": "Primeira vez?",
+      "register": "Cria uma conta"
+    },
+    "register": {
+      "title": "Cria uma conta",
+      "submit": "Criar conta",
+      "have_account": "Já tens conta?",
+      "login": "Entrar"
+    },
+    "forgot": {
+      "title": "Esqueceste-te da palavra-passe?",
+      "intro": "Indica o teu email e enviamos-te um link para escolheres uma nova.",
+      "submit": "Enviar link",
+      "sent": "Se esse email tiver uma conta, o link está a caminho.",
+      "back": "Voltar a entrar"
+    },
+    "reset": {
+      "title": "Escolhe uma nova palavra-passe",
+      "submit": "Guardar palavra-passe",
+      "done": "Palavra-passe atualizada. Entra com a nova palavra-passe."
+    },
+    "verify": {
+      "pending_title": "Verifica a tua caixa de entrada",
+      "pending_text": "Enviámos-te um link para verificares o teu email. Precisas dele para fazer encomendas.",
+      "success_title": "Email verificado",
+      "success_text": "Obrigado! Já podes fazer encomendas.",
+      "already_title": "Já verificado",
+      "already_text": "Este email já estava verificado.",
+      "invalid_title": "Link inválido",
+      "invalid_text": "O link é inválido ou expirou. Entra e pede um novo.",
+      "resend": "Reenviar email",
+      "resent": "Email de verificação enviado.",
+      "continue": "Continuar a comprar"
+    },
+    "account": {
+      "title": "A minha conta",
+      "hello": "Olá, {name}",
+      "verified": "Email verificado",
+      "unverified": "Email ainda não verificado",
+      "logout": "Sair"
+    },
+    "errors": {
+      "required": "Este campo é obrigatório.",
+      "email": "Indica um email válido.",
+      "min_password": "Usa pelo menos 8 caracteres.",
+      "mismatch": "As palavras-passe não coincidem.",
+      "too_long": "É demasiado longo.",
+      "invalid_credentials": "Email ou palavra-passe incorretos.",
+      "email_taken": "Esse email já está registado.",
+      "throttled": "Demasiadas tentativas. Tenta novamente daqui a um minuto.",
+      "generic": "Algo correu mal. Tenta novamente.",
+      "invalid_link": "O link é inválido ou expirou. Pede um novo.",
+      "not_logged_in": "Entra para continuar."
+    }
   }
 }

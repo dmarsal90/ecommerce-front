@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { parseFilters, toSearchParams } from './filters';
+import { parseFilters, toSearchParams, toUrlParams } from './filters';
 
 describe('parseFilters', () => {
   it('falls back to defaults for invalid input', () => {
@@ -32,5 +32,14 @@ describe('toSearchParams', () => {
       12,
     );
     expect(q.toString()).toBe('color%5B%5D=black&size%5B%5D=l&size%5B%5D=m&per_page=12');
+  });
+});
+
+describe('toUrlParams', () => {
+  it('round-trips through parseFilters with plain repeated keys', () => {
+    const f = parseFilters({ color: ['black', 'red'], on_sale: '1', page: '3', sort: 'name_asc' });
+    const q = toUrlParams(f);
+    expect(q.getAll('color')).toEqual(['black', 'red']);
+    expect(parseFilters(Object.fromEntries([...new Set(q.keys())].map((k) => [k, q.getAll(k)])))).toEqual(f);
   });
 });

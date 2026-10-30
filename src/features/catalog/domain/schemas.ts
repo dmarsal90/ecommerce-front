@@ -88,8 +88,11 @@ export const filterOptionsSchema = z.object({
   sizes: z.array(z.object({ value: z.string(), slug: z.string() })),
 });
 
+export const taxonomyListSchema = z.object({ data: z.array(named) });
+
 export type Variant = z.infer<typeof variantSchema>;
 export type Review = z.infer<typeof reviewSchema>;
 export type Product = z.infer<typeof productSchema>;
 export type ProductPage = z.infer<typeof productPageSchema>;
+export type Taxonomy = z.infer<typeof named>;
 export type FilterOptions = z.infer<typeof filterOptionsSchema>;

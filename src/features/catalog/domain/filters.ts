@@ -66,3 +66,10 @@ export function toSearchParams(f: ProductFilters, perPage?: number): URLSearchPa
   set('per_page', perPage);
   return q;
 }
+
+/** Storefront URL query: same as the API query but with plain repeated keys (`color=a&color=b`). */
+export function toUrlParams(f: ProductFilters): URLSearchParams {
+  const q = new URLSearchParams();
+  for (const [key, value] of toSearchParams(f)) q.append(key.replace('[]', ''), value);
+  return q;
+}

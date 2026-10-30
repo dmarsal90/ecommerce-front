@@ -36,7 +36,8 @@ export default async function RootLayout({ children }: LayoutProps<'/[lang]'>) {
       <head>
         <ThemeScript />
       </head>
-      <body className="min-h-dvh">
+      {/* Extensions (password managers and the like) add attributes to <body> before React hydrates. */}
+      <body className="min-h-dvh" suppressHydrationWarning>
         <SiteHeader locale={locale} dict={dict} />
         <main className="mx-auto max-w-7xl p-4">{children}</main>
         <SiteFooter dict={dict} />

@@ -1,0 +1,122 @@
+{
+  "en": {
+    "not_found": {
+      "code": "404",
+      "title": "Page not found",
+      "text": "The page you are looking for doesn't exist or has moved."
+    },
+    "forbidden": {
+      "code": "403",
+      "title": "Access denied",
+      "text": "You don't have permission to see this page."
+    },
+    "error": {
+      "code": "500",
+      "title": "Something went wrong",
+      "text": "We hit an unexpected problem. Please try again in a moment."
+    },
+    "home": "Back to home",
+    "shop": "Browse the shop",
+    "retry": "Try again"
+  },
+  "es": {
+    "not_found": {
+      "code": "404",
+      "title": "Página no encontrada",
+      "text": "La página que buscas no existe o se ha movido."
+    },
+    "forbidden": {
+      "code": "403",
+      "title": "Acceso denegado",
+      "text": "No tienes permiso para ver esta página."
+    },
+    "error": {
+      "code": "500",
+      "title": "Algo ha salido mal",
+      "text": "Hemos tenido un problema inesperado. Inténtalo de nuevo en un momento."
+    },
+    "home": "Volver al inicio",
+    "shop": "Ver la tienda",
+    "retry": "Reintentar"
+  },
+  "it": {
+    "not_found": {
+      "code": "404",
+      "title": "Pagina non trovata",
+      "text": "La pagina che cerchi non esiste o è stata spostata."
+    },
+    "forbidden": {
+      "code": "403",
+      "title": "Accesso negato",
+      "text": "Non hai il permesso di vedere questa pagina."
+    },
+    "error": {
+      "code": "500",
+      "title": "Qualcosa è andato storto",
+      "text": "Si è verificato un problema imprevisto. Riprova tra un attimo."
+    },
+    "home": "Torna alla home",
+    "shop": "Vai al negozio",
+    "retry": "Riprova"
+  },
+  "de": {
+    "not_found": {
+      "code": "404",
+      "title": "Seite nicht gefunden",
+      "text": "Die gesuchte Seite existiert nicht oder wurde verschoben."
+    },
+    "forbidden": {
+      "code": "403",
+      "title": "Zugriff verweigert",
+      "text": "Du hast keine Berechtigung, diese Seite zu sehen."
+    },
+    "error": {
+      "code": "500",
+      "title": "Etwas ist schiefgelaufen",
+      "text": "Es ist ein unerwartetes Problem aufgetreten. Bitte versuche es gleich noch einmal."
+    },
+    "home": "Zur Startseite",
+    "shop": "Zum Shop",
+    "retry": "Erneut versuchen"
+  },
+  "pt": {
+    "not_found": {
+      "code": "404",
+      "title": "Página não encontrada",
+      "text": "A página que procuras não existe ou foi movida."
+    },
+    "forbidden": {
+      "code": "403",
+      "title": "Acesso negado",
+      "text": "Não tens permissão para ver esta página."
+    },
+    "error": {
+      "code": "500",
+      "title": "Algo correu mal",
+      "text": "Ocorreu um problema inesperado. Tenta novamente daqui a pouco."
+    },
+    "home": "Voltar ao início",
+    "shop": "Ver a loja",
+    "retry": "Tentar novamente"
+  },
+  "fr": {
+    "not_found": {
+      "code": "404",
+      "title": "Page introuvable",
+      "text": "La page que vous cherchez n'existe pas ou a été déplacée."
+    },
+    "forbidden": {
+      "code": "403",
+      "title": "Accès refusé",
+      "text": "Vous n'avez pas l'autorisation de voir cette page."
+    },
+    "error": {
+      "code": "500",
+      "title": "Un problème est survenu",
+      "text": "Nous avons rencontré un problème inattendu. Réessayez dans un instant."
+    },
+    "home": "Retour à l'accueil",
+    "shop": "Voir la boutique",
+    "retry": "Réessayer"
+  }
+}

@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  experimental: { authInterrupts: true },
   headers: async () => [{ source: '/:path*', headers: securityHeaders }],
   turbopack: {
     rules: {

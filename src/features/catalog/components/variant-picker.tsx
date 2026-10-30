@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ComponentType } from 'react';
+import type { AddToCartProps } from '@/features/cart';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/get-dictionary';
 import type { Variant } from '../domain/schemas';
@@ -16,12 +17,20 @@ import { Price } from './price';
 const LOW_STOCK = 5;
 
 export function VariantPicker({
+  productId,
+  productInStock,
+  AddToCart,
   variants,
   price,
   compareAt,
   locale,
   dict,
 }: {
+  productId: number;
+  /** Stock of the product itself, used when it has no variants. */
+  productInStock: boolean;
+  /** The add-to-cart form, handed in by the page so this client component never imports the cart's server code. */
+  AddToCart: ComponentType<AddToCartProps>;
   variants: Variant[];
   price: number;
   compareAt: number | null;
@@ -82,6 +91,14 @@ export function VariantPicker({
           </div>
         </fieldset>
       ))}
+
+      <AddToCart
+        productId={productId}
+        variantId={selected?.id}
+        canAdd={variants.length === 0 ? productInStock : Boolean(selected && isInStock(selected))}
+        locale={locale}
+        copy={dict.cart}
+      />
 
       <p role="status" className={selected && isInStock(selected) ? 'text-sm' : 'text-muted text-sm'}>
         {status}

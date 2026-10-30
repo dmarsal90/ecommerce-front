@@ -29,7 +29,7 @@ export function LanguageSwitcher({ current, label }: { current: Locale; label: s
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen((o) => !o)}
-        className="border-border bg-surface text-foreground flex min-h-11 items-center gap-1 rounded-full border px-4 text-sm font-medium uppercase"
+        className="border-border bg-surface text-foreground flex min-h-11 items-center gap-1 rounded-full border px-3 text-sm font-medium uppercase sm:px-4"
       >
         {current}
         <svg aria-hidden viewBox="0 0 24 24" className="size-4 fill-none stroke-current stroke-2">

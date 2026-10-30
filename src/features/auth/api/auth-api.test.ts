@@ -21,4 +21,11 @@ describe('auth api', () => {
     await expect(api.me('t0k')).resolves.toEqual(user);
     expect(fetchImpl.mock.calls[0][1].headers).toMatchObject({ Authorization: 'Bearer t0k' });
   });
+
+  it('sends the guest cart token on sign in so the API can merge the carts', async () => {
+    const fetchImpl = respond({ user, token: 't0k' });
+    const api = createAuthApi(createApiClient('http://api.test/api/', fetchImpl));
+    await api.login('es', { email: 'a@b.co', password: 'x' }, 'cart-uuid');
+    expect(fetchImpl.mock.calls[0][1].headers).toMatchObject({ 'X-Cart-Token': 'cart-uuid' });
+  });
 });

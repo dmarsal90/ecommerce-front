@@ -160,5 +160,33 @@
       "file_too_large": "La photo dépasse 2 Mo.",
       "file_type": "Utilisez une image JPG, PNG ou WebP."
     }
+  },
+  "cart": {
+    "title": "Votre panier",
+    "open": "Panier",
+    "empty": "Votre panier est vide.",
+    "empty_cta": "Commencer vos achats",
+    "continue_shopping": "Continuer vos achats",
+    "add": "Ajouter au panier",
+    "added": "Ajouté à votre panier.",
+    "view": "Voir le panier",
+    "remove": "Supprimer",
+    "qty_dec": "Diminuer la quantité de {name}",
+    "qty_inc": "Augmenter la quantité de {name}",
+    "qty": "Quantité",
+    "unit": "L'unité",
+    "subtotal": "Sous-total",
+    "note": "La livraison et les taxes sont calculées au paiement.",
+    "checkout": "Payer",
+    "checkout_login": "Connectez-vous pour payer",
+    "shipping_remaining": "Ajoutez encore {amount} pour la livraison gratuite",
+    "shipping_free": "Vous avez la livraison gratuite !",
+    "no_image": "Aucune image",
+    "err_unavailable": "Cet article est épuisé ou n'est plus disponible.",
+    "err_throttled": "Trop de tentatives. Réessayez dans une minute.",
+    "err_generic": "Un problème est survenu. Réessayez.",
+    "pick": "Choisissez d'abord vos options",
+    "open_count_one": "Panier, {count} article",
+    "open_count_other": "Panier, {count} articles"
   }
 }

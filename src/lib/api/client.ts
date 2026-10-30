@@ -5,6 +5,7 @@ export interface ApiClient {
   get<S extends z.ZodType>(path: string, schema: S, init?: RequestInit): Promise<z.infer<S>>;
   /** A FormData body is sent as multipart; anything else as JSON. */
   post<S extends z.ZodType>(path: string, schema: S, body?: unknown, init?: RequestInit): Promise<z.infer<S>>;
+  put<S extends z.ZodType>(path: string, schema: S, body?: unknown, init?: RequestInit): Promise<z.infer<S>>;
   delete<S extends z.ZodType>(path: string, schema: S, init?: RequestInit): Promise<z.infer<S>>;
 }
 
@@ -59,6 +60,12 @@ export function createApiClient(baseUrl: string, fetchImpl: typeof fetch = fetch
           ...(body === undefined || body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
           ...init?.headers,
         },
+      }),
+    put: (path, schema, body, init) =>
+      request('PUT', path, schema, {
+        ...init,
+        body: body === undefined ? undefined : JSON.stringify(body),
+        headers: { ...(body === undefined ? {} : { 'Content-Type': 'application/json' }), ...init?.headers },
       }),
     delete: (path, schema, init) => request('DELETE', path, schema, init),
   };

@@ -160,5 +160,33 @@
       "file_too_large": "The photo is larger than 2 MB.",
       "file_type": "Use a JPG, PNG or WebP image."
     }
+  },
+  "cart": {
+    "title": "Your cart",
+    "open": "Cart",
+    "empty": "Your cart is empty.",
+    "empty_cta": "Start shopping",
+    "continue_shopping": "Continue shopping",
+    "add": "Add to cart",
+    "added": "Added to your cart.",
+    "view": "View cart",
+    "remove": "Remove",
+    "qty_dec": "Decrease quantity of {name}",
+    "qty_inc": "Increase quantity of {name}",
+    "qty": "Quantity",
+    "unit": "Each",
+    "subtotal": "Subtotal",
+    "note": "Shipping and taxes are calculated at checkout.",
+    "checkout": "Checkout",
+    "checkout_login": "Sign in to check out",
+    "shipping_remaining": "Add {amount} more for free shipping",
+    "shipping_free": "You've got free shipping!",
+    "no_image": "No image",
+    "err_unavailable": "That item is out of stock or no longer available.",
+    "err_throttled": "Too many attempts. Try again in a minute.",
+    "err_generic": "Something went wrong. Please try again.",
+    "pick": "Choose your options first",
+    "open_count_one": "Cart, {count} item",
+    "open_count_other": "Cart, {count} items"
   }
 }

@@ -8,7 +8,7 @@ export function SiteHeader({ locale, dict }: { locale: Locale; dict: Dictionary 
   return (
     <header className="border-border bg-background/90 sticky top-0 z-40 border-b backdrop-blur">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2">
-        <Link href={`/${locale}`} className="font-display text-xl font-bold" aria-label={dict.nav.home}>
+        <Link href={`/${locale}`} className="font-display text-xl font-bold">
           {dict.meta.title}
         </Link>
         <div className="flex items-center gap-2">

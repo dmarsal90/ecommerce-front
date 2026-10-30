@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { lang } from 'next/root-params';
 import { Suspense } from 'react';
+import { CancelOrder, canCancel } from '@/features/account';
 import { OrderStatus, checkoutApi } from '@/features/checkout';
 import { ApiError } from '@/lib/api/client';
 import { hasLocale, type Locale } from '@/i18n/config';
@@ -30,12 +31,17 @@ async function OrderContent({ locale, params }: { locale: Locale; params: Props[
 
   return (
     <div className="grid gap-8 lg:grid-cols-[3fr_2fr]">
-      <OrderStatus
-        orderNumber={order.order_number}
-        initialPaymentStatus={order.payment_status}
-        locale={locale}
-        copy={copy}
-      />
+      <div className="space-y-6">
+        <OrderStatus
+          orderNumber={order.order_number}
+          initialPaymentStatus={order.payment_status}
+          locale={locale}
+          copy={copy}
+        />
+        {canCancel(order.status) && (
+          <CancelOrder orderNumber={order.order_number} locale={locale} copy={dict.myAccount} />
+        )}
+      </div>
       <section
         aria-labelledby="order-sum"
         className="bg-surface border-border rounded-panel h-fit space-y-4 border p-5"

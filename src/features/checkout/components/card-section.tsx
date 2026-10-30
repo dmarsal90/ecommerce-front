@@ -22,7 +22,7 @@ function useCardStyle() {
   );
 }
 
-function AddCardForm({ copy, onSaved }: { copy: Copy; onSaved: (id: number) => void }) {
+export function AddCardForm({ copy, onSaved }: { copy: Copy; onSaved?: (id: number) => void }) {
   const stripe = useStripe();
   const elements = useElements();
   const router = useRouter();
@@ -58,7 +58,7 @@ function AddCardForm({ copy, onSaved }: { copy: Copy; onSaved: (id: number) => v
     }
     card.clear();
     setName('');
-    onSaved(saved.cardId);
+    onSaved?.(saved.cardId);
     router.refresh();
     setBusy(false);
   }
@@ -92,7 +92,7 @@ function AddCardForm({ copy, onSaved }: { copy: Copy; onSaved: (id: number) => v
       <button
         type="submit"
         disabled={!stripe || busy}
-        className="border-border hover:border-accent rounded-full border px-5 py-2 font-semibold disabled:opacity-60"
+        className="border-border hover:border-accent-ink rounded-full border px-5 py-2 font-semibold disabled:opacity-60"
       >
         {copy.card_save}
       </button>
@@ -125,7 +125,7 @@ export function CardSection({
           {cards.map((c) => (
             <label
               key={c.id}
-              className={`border-border has-[:checked]:border-accent has-[:checked]:bg-surface rounded-panel flex gap-3 border p-3 ${c.is_expired ? 'opacity-60' : 'cursor-pointer'}`}
+              className={`border-border has-[:checked]:border-accent-ink has-[:checked]:bg-surface rounded-panel flex gap-3 border p-3 ${c.is_expired ? 'opacity-60' : 'cursor-pointer'}`}
             >
               <input
                 type="radio"

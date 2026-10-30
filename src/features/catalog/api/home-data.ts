@@ -2,7 +2,7 @@ import { cacheLife } from 'next/cache';
 import { z } from 'zod';
 import { createApiClient } from '@/lib/api/client';
 import { env } from '@/lib/env';
-import { brandSchema, collectionSchema, type Brand, type Collection } from '../domain/schemas';
+import { bannerSchema, brandSchema, collectionSchema, type Brand, type Collection } from '../domain/schemas';
 
 const api = createApiClient(new URL('/api/', env.NEXT_PUBLIC_API_URL).href);
 
@@ -27,4 +27,12 @@ export async function getCollections(): Promise<Collection[]> {
   'use cache';
   cacheLife('minutes');
   return list('collections', collectionSchema);
+}
+
+/** The photo of the first hero banner that has one (the hero text comes from the translations, not the banner). */
+export async function getHeroImage(): Promise<string | null> {
+  'use cache';
+  cacheLife('minutes');
+  const banners = await list('banners?position=homepage_hero', bannerSchema);
+  return banners.find((banner) => banner.image)?.image ?? null;
 }

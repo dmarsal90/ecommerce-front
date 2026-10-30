@@ -23,6 +23,13 @@ export function createAuthApi(api: ApiClient) {
       body: { token: string; email: string; password: string; password_confirmation: string },
     ) => api.post('reset-password', messageSchema, body, { headers: headers(locale) }),
     me: async (token: string) => (await api.get('me', meSchema, { headers: headers('en', token) })).user,
+    uploadAvatar: async (token: string, file: File) => {
+      const body = new FormData();
+      body.set('avatar', file);
+      return (await api.post('me/avatar', meSchema, body, { headers: headers('en', token) })).user;
+    },
+    removeAvatar: async (token: string) =>
+      (await api.delete('me/avatar', meSchema, { headers: headers('en', token) })).user,
     logout: (token: string) =>
       api.post('logout', messageSchema, undefined, { headers: headers('en', token) }),
     resendVerification: (locale: Locale, token: string) =>

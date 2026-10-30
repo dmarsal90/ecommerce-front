@@ -3,7 +3,9 @@ import type { z } from 'zod';
 /** Port the features depend on; the fetch-based adapter below is one implementation. */
 export interface ApiClient {
   get<S extends z.ZodType>(path: string, schema: S, init?: RequestInit): Promise<z.infer<S>>;
+  /** A FormData body is sent as multipart; anything else as JSON. */
   post<S extends z.ZodType>(path: string, schema: S, body?: unknown, init?: RequestInit): Promise<z.infer<S>>;
+  delete<S extends z.ZodType>(path: string, schema: S, init?: RequestInit): Promise<z.infer<S>>;
 }
 
 export class ApiError extends Error {
@@ -48,8 +50,16 @@ export function createApiClient(baseUrl: string, fetchImpl: typeof fetch = fetch
     post: (path, schema, body, init) =>
       request('POST', path, schema, {
         ...init,
-        body: body === undefined ? undefined : JSON.stringify(body),
-        headers: { ...(body === undefined ? {} : { 'Content-Type': 'application/json' }), ...init?.headers },
+        body:
+          body === undefined || body instanceof FormData
+            ? (body as FormData | undefined)
+            : JSON.stringify(body),
+        // fetch sets the multipart boundary itself, so FormData must not get a Content-Type.
+        headers: {
+          ...(body === undefined || body instanceof FormData ? {} : { 'Content-Type': 'application/json' }),
+          ...init?.headers,
+        },
       }),
+    delete: (path, schema, init) => request('DELETE', path, schema, init),
   };
 }

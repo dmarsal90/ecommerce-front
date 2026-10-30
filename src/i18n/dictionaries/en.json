@@ -84,7 +84,8 @@
   "auth": {
     "menu": {
       "login": "Sign in",
-      "account": "Account"
+      "account": "Account",
+      "open": "Open account menu"
     },
     "fields": {
       "name": "Name",
@@ -135,7 +136,13 @@
       "hello": "Hello, {name}",
       "verified": "Email verified",
       "unverified": "Email not verified yet",
-      "logout": "Sign out"
+      "logout": "Sign out",
+      "photo_title": "Profile photo",
+      "photo_hint": "JPG, PNG or WebP, up to 2 MB.",
+      "photo_upload": "Save photo",
+      "photo_choose": "Choose a photo",
+      "photo_remove": "Remove photo",
+      "photo_saved": "Photo updated."
     },
     "errors": {
       "required": "This field is required.",
@@ -148,7 +155,10 @@
       "throttled": "Too many attempts. Try again in a minute.",
       "generic": "Something went wrong. Please try again.",
       "invalid_link": "This link is invalid or has expired. Request a new one.",
-      "not_logged_in": "Sign in to continue."
+      "not_logged_in": "Sign in to continue.",
+      "file_required": "Choose a photo first.",
+      "file_too_large": "The photo is larger than 2 MB.",
+      "file_type": "Use a JPG, PNG or WebP image."
     }
   }
 }

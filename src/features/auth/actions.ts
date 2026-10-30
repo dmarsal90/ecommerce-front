@@ -1,9 +1,11 @@
 'use server';
 
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { ApiError } from '@/lib/api/client';
 import { clearToken, getToken, setToken } from '@/lib/session';
 import { authApi } from './api/server';
+import { avatarProblem } from './domain/avatar';
 import {
   echo,
   forgotSchema,
@@ -100,4 +102,30 @@ export async function resendVerification(_: FormState, formData: FormData): Prom
     return failure(error, { code: 'generic' }, formData);
   }
   return { ok: true };
+}
+
+export async function uploadAvatar(_: FormState, formData: FormData): Promise<FormState> {
+  const token = await getToken();
+  if (!token) return { error: 'not_logged_in' };
+
+  const file = formData.get('avatar');
+  const problem = avatarProblem(file);
+  if (problem) return { fieldErrors: { avatar: problem } };
+
+  try {
+    await authApi.uploadAvatar(token, file as File);
+  } catch (error) {
+    // The API repeats the same checks (type, 2 MB, pixel size); anything it rejects is reported as a bad file.
+    return failure(error, { field: 'avatar', code: 'file_type' }, formData);
+  }
+  // The header shows the avatar on every page.
+  revalidatePath('/', 'layout');
+  return { ok: true };
+}
+
+export async function removeAvatar(): Promise<void> {
+  const token = await getToken();
+  if (!token) return;
+  await authApi.removeAvatar(token);
+  revalidatePath('/', 'layout');
 }

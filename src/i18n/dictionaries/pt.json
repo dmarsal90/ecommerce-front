@@ -84,7 +84,8 @@
   "auth": {
     "menu": {
       "login": "Entrar",
-      "account": "Conta"
+      "account": "Conta",
+      "open": "Abrir o menu da conta"
     },
     "fields": {
       "name": "Nome",
@@ -135,7 +136,13 @@
       "hello": "Olá, {name}",
       "verified": "Email verificado",
       "unverified": "Email ainda não verificado",
-      "logout": "Sair"
+      "logout": "Sair",
+      "photo_title": "Foto de perfil",
+      "photo_hint": "JPG, PNG ou WebP, até 2 MB.",
+      "photo_upload": "Guardar foto",
+      "photo_choose": "Escolher uma foto",
+      "photo_remove": "Remover foto",
+      "photo_saved": "Foto atualizada."
     },
     "errors": {
       "required": "Este campo é obrigatório.",
@@ -148,7 +155,10 @@
       "throttled": "Demasiadas tentativas. Tenta novamente daqui a um minuto.",
       "generic": "Algo correu mal. Tenta novamente.",
       "invalid_link": "O link é inválido ou expirou. Pede um novo.",
-      "not_logged_in": "Entra para continuar."
+      "not_logged_in": "Entra para continuar.",
+      "file_required": "Escolhe primeiro uma foto.",
+      "file_too_large": "A foto tem mais de 2 MB.",
+      "file_type": "Usa uma imagem JPG, PNG ou WebP."
     }
   }
 }

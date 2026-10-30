@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { createApiClient } from '@/lib/api/client';
 import { createAuthApi } from './auth-api';
 
-const user = { id: 1, name: 'Ana', email: 'a@b.co', email_verified_at: null };
+const user = { id: 1, name: 'Ana', email: 'a@b.co', email_verified_at: null, avatar_url: null };
 const respond = (body: unknown) => vi.fn().mockResolvedValue(new Response(JSON.stringify(body)));
 
 describe('auth api', () => {

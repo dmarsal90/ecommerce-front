@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { lang } from 'next/root-params';
 import { Suspense } from 'react';
-import { AuthShell, ResendForm, getCurrentUser, logout } from '@/features/auth';
+import { AuthShell, AvatarForm, ResendForm, getCurrentUser, gravatarUrl, logout } from '@/features/auth';
 import { hasLocale, type Locale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/get-dictionary';
 
@@ -26,6 +26,7 @@ async function AccountContent({ locale }: { locale: Locale }) {
           {user.email_verified_at ? auth.account.verified : auth.account.unverified}
         </dd>
       </dl>
+      <AvatarForm user={user} gravatar={gravatarUrl(user.email, 72)} copy={auth} />
       {!user.email_verified_at && <ResendForm locale={locale} copy={auth} />}
       <form action={logout}>
         <input type="hidden" name="locale" value={locale} />

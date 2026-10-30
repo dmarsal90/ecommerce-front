@@ -5,6 +5,7 @@ export const userSchema = z.object({
   name: z.string(),
   email: z.string(),
   email_verified_at: z.string().nullable(),
+  avatar_url: z.string().nullable(),
 });
 
 export const authResponseSchema = z.object({ user: userSchema, token: z.string() });

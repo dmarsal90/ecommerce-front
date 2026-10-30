@@ -67,5 +67,18 @@
     "next": "Suivant",
     "page": "Page {page} sur {total}",
     "pagination": "Pagination"
+  },
+  "product": {
+    "breadcrumb": "Fil d'Ariane",
+    "select_options": "Choisissez une option",
+    "in_stock": "En stock",
+    "low_stock": "Plus que {count} en stock",
+    "out_of_stock": "Épuisé",
+    "reviews": "Avis",
+    "no_reviews": "Aucun avis pour le moment.",
+    "verified": "Achat vérifié",
+    "rating": "{rating} étoiles sur 5",
+    "related": "Vous aimerez aussi",
+    "details": "Détails"
   }
 }

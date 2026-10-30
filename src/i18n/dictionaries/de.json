@@ -67,5 +67,18 @@
     "next": "Weiter",
     "page": "Seite {page} von {total}",
     "pagination": "Seitennavigation"
+  },
+  "product": {
+    "breadcrumb": "Brotkrümelnavigation",
+    "select_options": "Wähle eine Option",
+    "in_stock": "Auf Lager",
+    "low_stock": "Nur noch {count} übrig",
+    "out_of_stock": "Ausverkauft",
+    "reviews": "Bewertungen",
+    "no_reviews": "Noch keine Bewertungen.",
+    "verified": "Verifizierter Kauf",
+    "rating": "{rating} von 5 Sternen",
+    "related": "Das könnte dir auch gefallen",
+    "details": "Details"
   }
 }

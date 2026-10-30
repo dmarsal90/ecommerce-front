@@ -23,7 +23,6 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL),
     title: { default: dict.meta.title, template: `%s | ${dict.meta.title}` },
     description: dict.meta.description,
-    alternates: { languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])) },
   };
 }
 

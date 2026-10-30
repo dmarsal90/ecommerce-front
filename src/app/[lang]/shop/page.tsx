@@ -6,6 +6,9 @@ import {
   FiltersForm,
   Pagination,
   ProductGrid,
+  ResultsFrame,
+  ResultsSkeleton,
+  ShopNavigation,
   SortLinks,
   getBrands,
   getCategories,
@@ -52,7 +55,7 @@ async function Results({
   ]);
 
   return (
-    <>
+    <ShopNavigation>
       <FiltersForm
         filters={filters}
         options={options}
@@ -61,27 +64,29 @@ async function Results({
         locale={locale}
         dict={dict}
       />
-      <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-        {page && (
-          <p className="text-muted text-sm" aria-live="polite">
-            {dict.shop[
-              `results_${new Intl.PluralRules(locale).select(page.meta.total) === 'one' ? 'one' : 'other'}`
-            ].replace('{count}', String(page.meta.total))}
-          </p>
-        )}
-        <SortLinks filters={filters} locale={locale} dict={dict} />
-      </div>
-      <div className="mt-6">
-        {!page ? (
-          <p role="alert">{dict.shop.error}</p>
-        ) : page.data.length === 0 ? (
-          <p>{dict.shop.empty}</p>
-        ) : (
-          <ProductGrid products={page.data} locale={locale} dict={dict} />
-        )}
-      </div>
-      {page && <Pagination filters={filters} lastPage={page.meta.last_page} locale={locale} dict={dict} />}
-    </>
+      <ResultsFrame>
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+          {page && (
+            <p className="text-muted text-sm" aria-live="polite">
+              {dict.shop[
+                `results_${new Intl.PluralRules(locale).select(page.meta.total) === 'one' ? 'one' : 'other'}`
+              ].replace('{count}', String(page.meta.total))}
+            </p>
+          )}
+          <SortLinks filters={filters} locale={locale} dict={dict} />
+        </div>
+        <div className="mt-6">
+          {!page ? (
+            <p role="alert">{dict.shop.error}</p>
+          ) : page.data.length === 0 ? (
+            <p>{dict.shop.empty}</p>
+          ) : (
+            <ProductGrid products={page.data} locale={locale} dict={dict} />
+          )}
+        </div>
+        {page && <Pagination filters={filters} lastPage={page.meta.last_page} locale={locale} dict={dict} />}
+      </ResultsFrame>
+    </ShopNavigation>
   );
 }
 
@@ -93,7 +98,7 @@ export default async function ShopPage({ searchParams }: PageProps<'/[lang]/shop
   return (
     <>
       <h1 className="font-display mb-6 text-4xl font-bold">{dict.shop.title}</h1>
-      <Suspense fallback={<p className="text-muted">…</p>}>
+      <Suspense fallback={<ResultsSkeleton />}>
         <Results locale={locale} searchParams={searchParams} />
       </Suspense>
     </>

@@ -29,3 +29,5 @@ export { ProductGallery } from './components/product-gallery';
 export { Price } from './components/price';
 export { ReviewsList } from './components/reviews-list';
 export { VariantPicker } from './components/variant-picker';
+export { ResultsFrame, ShopNavigation } from './components/shop-navigation';
+export { ResultsSkeleton } from './components/results-skeleton';

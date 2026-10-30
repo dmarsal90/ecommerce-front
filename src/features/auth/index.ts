@@ -6,4 +6,4 @@ export { gravatarUrl } from './api/gravatar';
 export { logout } from './actions';
 export { ForgotForm, LoginForm, RegisterForm, ResendForm, ResetForm } from './components/forms';
 export type { User } from './domain/schemas';
-export { localeFrom } from './domain/forms';
+export { echo, localeFrom, parseForm, type FormState } from './domain/forms';

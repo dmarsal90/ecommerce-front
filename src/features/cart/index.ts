@@ -4,3 +4,4 @@ export { AddToCartForm, type AddToCartProps } from './components/add-to-cart-for
 export { CartButton } from './components/cart-button';
 export { CartView } from './components/cart-view';
 export type { Cart } from './domain/schemas';
+export { cartApi } from './api/server';

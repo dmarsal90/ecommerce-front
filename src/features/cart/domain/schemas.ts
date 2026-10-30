@@ -33,6 +33,7 @@ export const messageSchema = z.object({ message: z.string() }).passthrough();
 export const shopConfigSchema = z.object({
   data: z.object({
     currency: z.string(),
+    tax_rate: z.coerce.number(),
     free_shipping_threshold: z.coerce.number(),
     shipping_cost: z.coerce.number(),
   }),

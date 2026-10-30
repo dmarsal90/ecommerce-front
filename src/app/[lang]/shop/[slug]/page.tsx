@@ -3,16 +3,20 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { lang } from 'next/root-params';
 import { Suspense } from 'react';
+import { JsonLd } from '@/components/json-ld';
 import {
   ProductGallery,
   ProductGrid,
   ReviewsList,
   VariantPicker,
+  breadcrumbJsonLd,
   getProduct,
   getRelatedProducts,
+  productJsonLd,
 } from '@/features/catalog';
 import { defaultLocale, hasLocale, locales, type Locale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/get-dictionary';
+import { env } from '@/lib/env';
 
 type Props = PageProps<'/[lang]/shop/[slug]'>;
 
@@ -45,8 +49,31 @@ async function ProductDetail({ locale, params }: { locale: Locale; params: Props
   ]);
   if (!product) notFound();
 
+  const site = new URL(env.NEXT_PUBLIC_SITE_URL).origin;
+  const crumbs = [
+    { name: dict.shop.title, url: `${site}/${locale}/shop` },
+    ...(product.category
+      ? [{ name: product.category.name, url: `${site}/${locale}/shop?category=${product.category.slug}` }]
+      : []),
+    { name: product.name, url: `${site}/${locale}/shop/${product.slug}` },
+  ];
+
   return (
     <>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            productJsonLd(product, {
+              site,
+              locale,
+              currency: env.NEXT_PUBLIC_CURRENCY,
+              assetBase: env.NEXT_PUBLIC_API_URL,
+            }),
+            breadcrumbJsonLd(crumbs),
+          ],
+        }}
+      />
       <nav aria-label={dict.product.breadcrumb} className="text-muted mb-6 text-sm">
         <ol className="flex flex-wrap gap-2">
           <li>

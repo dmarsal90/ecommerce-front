@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import type { Brand } from '@/features/catalog';
+import type { Locale } from '@/i18n/config';
 
-export function BrandMarquee({ brands, label }: { brands: Brand[]; label: string }) {
+export function BrandMarquee({ brands, label, locale }: { brands: Brand[]; label: string; locale: Locale }) {
   if (brands.length === 0) return null;
 
   const group = (hidden: boolean) => (
@@ -10,7 +12,13 @@ export function BrandMarquee({ brands, label }: { brands: Brand[]; label: string
     >
       {brands.map((brand) => (
         <li key={brand.id} className="whitespace-nowrap">
-          {brand.name}
+          <Link
+            href={`/${locale}/shop?brand=${encodeURIComponent(brand.slug)}`}
+            tabIndex={hidden ? -1 : undefined}
+            className="hover:text-accent transition-colors"
+          >
+            {brand.name}
+          </Link>
         </li>
       ))}
     </ul>

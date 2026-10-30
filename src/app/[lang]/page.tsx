@@ -17,7 +17,7 @@ export default async function HomePage() {
   return (
     <>
       <Hero locale={locale} dict={dict} />
-      <BrandMarquee brands={brands} label={dict.brands.title} />
+      <BrandMarquee brands={brands} label={dict.brands.title} locale={locale} />
       <Collections collections={collections} locale={locale} dict={dict} />
     </>
   );

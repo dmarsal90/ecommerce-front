@@ -25,6 +25,7 @@ export function createCartApi(api: ApiClient) {
       api.put(`cart/${encodeURIComponent(key)}`, messageSchema, { quantity }, { headers: headers(ctx) }),
     remove: (ctx: CartContext, key: string) =>
       api.delete(`cart/${encodeURIComponent(key)}`, messageSchema, { headers: headers(ctx) }),
+    clear: (ctx: CartContext) => api.delete('cart', messageSchema, { headers: headers(ctx) }),
     config: async () => (await api.get('config', shopConfigSchema)).data,
   };
 }

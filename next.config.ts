@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  // Server Actions default to a 1 MB body; avatar uploads are capped at 2 MB (see domain/avatar.ts).
+  experimental: { authInterrupts: true, serverActions: { bodySizeLimit: '3mb' } },
   headers: async () => [{ source: '/:path*', headers: securityHeaders }],
   turbopack: {
     rules: {

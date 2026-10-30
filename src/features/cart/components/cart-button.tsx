@@ -1,0 +1,53 @@
+import Link from 'next/link';
+import { unstable_rethrow } from 'next/navigation';
+import type { Locale } from '@/i18n/config';
+import type { Dictionary } from '@/i18n/get-dictionary';
+import { getCart } from '../api/current-cart';
+
+/** Reads cookies, so render it inside <Suspense>. A failing API shows the bag without a count instead of an error. */
+export async function CartButton({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+  let count = 0;
+  try {
+    count = (await getCart(locale)).total_quantity;
+  } catch (error) {
+    unstable_rethrow(error);
+    console.warn('Could not load the cart for the header:', error);
+  }
+
+  return (
+    <Link
+      href={`/${locale}/cart`}
+      aria-label={
+        count > 0
+          ? dict.cart[
+              `open_count_${new Intl.PluralRules(locale).select(count) === 'one' ? 'one' : 'other'}`
+            ].replace('{count}', String(count))
+          : dict.cart.open
+      }
+      className="border-border hover:border-accent-ink relative inline-flex size-10 items-center justify-center rounded-full border transition-colors"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden
+        className="size-5"
+      >
+        <circle cx="9" cy="20" r="1.3" />
+        <circle cx="18" cy="20" r="1.3" />
+        <path d="M2.5 3.5h2.4l2.1 11.2a1.8 1.8 0 0 0 1.8 1.5h8.6a1.8 1.8 0 0 0 1.8-1.4l1.5-7H5.6" />
+      </svg>
+      {count > 0 && (
+        <span
+          aria-hidden
+          className="bg-accent text-accent-foreground absolute -top-1 -right-1 flex min-w-5 items-center justify-center rounded-full px-1 text-xs leading-5 font-bold"
+        >
+          {count > 99 ? '99+' : count}
+        </span>
+      )}
+    </Link>
+  );
+}

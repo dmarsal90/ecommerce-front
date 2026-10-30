@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { lang } from 'next/root-params';
 import { notFound } from 'next/navigation';
-import { getCollections, getFeaturedBrands } from '@/features/catalog';
+import { getCollections, getFeaturedBrands, getHeroImage } from '@/features/catalog';
 import { BrandMarquee, Collections, Hero } from '@/features/home';
 import { JsonLd } from '@/components/json-ld';
 import { defaultLocale, hasLocale, locales } from '@/i18n/config';
@@ -45,10 +45,11 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function HomePage() {
   const locale = await lang();
   if (!hasLocale(locale)) notFound();
-  const [dict, brands, collections] = await Promise.all([
+  const [dict, brands, collections, heroImage] = await Promise.all([
     getDictionary(locale),
     getFeaturedBrands(),
     getCollections(),
+    getHeroImage(),
   ]);
 
   const site = new URL(env.NEXT_PUBLIC_SITE_URL).origin;
@@ -72,7 +73,7 @@ export default async function HomePage() {
           ],
         }}
       />
-      <Hero locale={locale} dict={dict} />
+      <Hero locale={locale} dict={dict} image={heroImage} />
       <BrandMarquee brands={brands} label={dict.brands.title} locale={locale} />
       <Collections collections={collections} locale={locale} dict={dict} />
     </>

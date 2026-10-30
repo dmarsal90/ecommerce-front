@@ -8,8 +8,11 @@
   --foreground: #14121a;
   --muted: #5b5766;
   --border: #e3dfd8;
-  --accent: #2b4bff;
-  --accent-foreground: #ffffff;
+  /* Same lime as dark mode, a touch softer so it does not glare on the bone background; ink text sits on it. */
+  --accent: #b9de3c;
+  --accent-foreground: #14121a;
+  /* Lime is too pale to read as text or thin lines on light backgrounds, so text, links and borders use this deep olive. */
+  --accent-ink: #3f5a00;
   --sale: #e8362b;
   color-scheme: light;
 }
@@ -22,6 +25,7 @@
   --border: #2c2c35;
   --accent: #c6f135;
   --accent-foreground: #0f0f12;
+  --accent-ink: #c6f135;
   --sale: #ff7a6b;
   color-scheme: dark;
 }
@@ -34,12 +38,22 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-ink: var(--accent-ink);
   --color-sale: var(--sale);
   --font-sans: var(--font-body);
   --font-display: var(--font-heading);
   --radius-card: 1.5rem;
   --radius-panel: 1rem;
   --radius-control: 0.75rem;
+}
+
+/* Native checkboxes, radios and progress bars take the theme colour instead of the browser's default blue. */
+:root {
+  accent-color: var(--accent-ink);
+}
+
+html {
+  scrollbar-color: var(--accent) var(--background);
 }
 
 body {
@@ -49,11 +63,216 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-ink);
   outline-offset: 2px;
 }
 
+/* Status-page illustrations (src/components/status-art.tsx). */
+.art * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.art-search {
+  animation: art-search 7s ease-in-out infinite;
+}
+.art-qmark {
+  animation: art-wobble 1.6s ease-in-out infinite;
+}
+.art-line {
+  animation: art-fade 2.4s ease-in-out infinite;
+}
+.art-line:nth-of-type(2) {
+  animation-delay: 0.4s;
+}
+.art-line:nth-of-type(3) {
+  animation-delay: 0.8s;
+}
+.art-cable-left {
+  transform-origin: 0 50%;
+  animation: art-twitch-left 2.8s ease-in-out infinite;
+}
+.art-cable-right {
+  transform-origin: 100% 50%;
+  animation: art-twitch-right 2.8s ease-in-out infinite;
+}
+.art-spark {
+  animation: art-spark 1.4s steps(1, end) infinite;
+}
+.art-spark-alt {
+  animation: art-spark 1.4s steps(1, end) infinite 0.7s;
+}
+.art-shield {
+  animation: art-shake 4s ease-in-out infinite;
+}
+.art-ring {
+  animation: art-ring 2.6s ease-out infinite;
+}
+.art-scan {
+  animation: art-scan 3.2s ease-in-out infinite;
+}
+.art-shackle {
+  transform-origin: 50% 100%;
+  animation: art-wobble 4s ease-in-out infinite;
+}
+
+@keyframes art-search {
+  0%,
+  100% {
+    transform: translate(-28px, -6px) rotate(-8deg);
+  }
+  25% {
+    transform: translate(34px, -22px) rotate(6deg);
+  }
+  50% {
+    transform: translate(22px, 30px) rotate(-4deg);
+  }
+  75% {
+    transform: translate(-30px, 24px) rotate(8deg);
+  }
+}
+@keyframes art-wobble {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+@keyframes art-fade {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes art-twitch-left {
+  0%,
+  55%,
+  100% {
+    transform: rotate(0);
+  }
+  60% {
+    transform: rotate(-4deg);
+  }
+  66% {
+    transform: rotate(2deg);
+  }
+  72% {
+    transform: rotate(-3deg);
+  }
+  80% {
+    transform: rotate(0);
+  }
+}
+@keyframes art-twitch-right {
+  0%,
+  55%,
+  100% {
+    transform: rotate(0);
+  }
+  60% {
+    transform: rotate(4deg);
+  }
+  66% {
+    transform: rotate(-2deg);
+  }
+  72% {
+    transform: rotate(3deg);
+  }
+  80% {
+    transform: rotate(0);
+  }
+}
+@keyframes art-spark {
+  0% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  65% {
+    opacity: 0;
+  }
+}
+@keyframes art-shake {
+  0%,
+  70%,
+  100% {
+    transform: translateX(0);
+  }
+  74% {
+    transform: translateX(-6px);
+  }
+  78% {
+    transform: translateX(6px);
+  }
+  82% {
+    transform: translateX(-4px);
+  }
+  86% {
+    transform: translateX(4px);
+  }
+  90% {
+    transform: translateX(0);
+  }
+}
+@keyframes art-ring {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+@keyframes art-scan {
+  0%,
+  100% {
+    transform: translateY(-62px);
+  }
+  50% {
+    transform: translateY(62px);
+  }
+}
+
+/* Shop results: cards glide to their new place when sorting or filtering, new ones fade in, removed ones fade out. */
+::view-transition-group(.product-move) {
+  animation-duration: 380ms;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+::view-transition-old(.vt-out) {
+  animation: vt-fade 160ms ease-in both reverse;
+}
+::view-transition-new(.vt-in) {
+  animation: vt-fade 260ms ease-out 120ms both;
+}
+@keyframes vt-fade {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+  .art * {
+    animation: none !important;
+  }
   *,
   *::before,
   *::after {

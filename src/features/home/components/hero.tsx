@@ -1,16 +1,17 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/get-dictionary';
 import { HeroReveal } from './hero-reveal';
 
-export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+export function Hero({ locale, dict, image }: { locale: Locale; dict: Dictionary; image: string | null }) {
   return (
-    <section className="bg-surface rounded-card px-6 py-16 md:px-12 md:py-24">
-      <HeroReveal className="max-w-3xl">
+    <section className={`bg-surface rounded-card overflow-hidden ${image ? 'grid md:grid-cols-2' : ''}`}>
+      <HeroReveal className="max-w-3xl px-6 py-16 md:px-12 md:py-24">
         <p
           data-reveal
           data-reveal-fade
-          className="text-accent text-sm font-semibold tracking-widest uppercase"
+          className="text-accent-ink text-sm font-semibold tracking-widest uppercase"
         >
           {dict.hero.eyebrow}
         </p>
@@ -32,6 +33,21 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           {dict.hero.cta}
         </Link>
       </HeroReveal>
+      {image && (
+        <div className="relative min-h-80 md:min-h-[34rem]">
+          {/* Decorative: the headline already says what the section is about.
+              shortcut: unoptimized until the image host is known, then add remotePatterns and drop this. */}
+          <Image
+            src={image}
+            alt=""
+            fill
+            priority
+            unoptimized
+            sizes="(min-width: 768px) 50vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+      )}
     </section>
   );
 }

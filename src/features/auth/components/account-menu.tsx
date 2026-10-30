@@ -1,13 +1,20 @@
 import Link from 'next/link';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/get-dictionary';
+import type { User } from '../domain/schemas';
 import { getCurrentUser } from '../api/current-user';
 import { gravatarUrl } from '../api/gravatar';
 import { UserMenu } from './user-menu';
 
 /** Reads the session cookie, so render it inside <Suspense>. */
 export async function AccountMenu({ locale, dict }: { locale: Locale; dict: Dictionary }) {
-  const user = await getCurrentUser();
+  // The header must never take the page down: if the API is slow, rate limiting or down, fall back to the sign-in link.
+  let user: User | null = null;
+  try {
+    user = await getCurrentUser();
+  } catch (error) {
+    console.warn('Could not load the current user for the header:', error);
+  }
   if (!user) {
     return (
       <Link

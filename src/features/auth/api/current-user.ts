@@ -1,11 +1,13 @@
 import 'server-only';
+import { cache } from 'react';
 import { ApiError } from '@/lib/api/client';
 import { getToken } from '@/lib/session';
 import type { User } from '../domain/schemas';
 import { authApi } from './server';
 
 /** The signed-in user, or null for guests and expired tokens. Other API failures still throw. */
-export async function getCurrentUser(): Promise<User | null> {
+// cache() shares one /me call between the header and the page within a request.
+export const getCurrentUser = cache(async (): Promise<User | null> => {
   const token = await getToken();
   if (!token) return null;
   try {
@@ -14,4 +16,4 @@ export async function getCurrentUser(): Promise<User | null> {
     if (error instanceof ApiError && error.status === 401) return null;
     throw error;
   }
-}
+});

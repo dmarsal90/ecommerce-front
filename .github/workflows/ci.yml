@@ -12,7 +12,7 @@ jobs:
       NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: pk_test_placeholder
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
       - uses: actions/setup-node@v4
         with:
           node-version: 22

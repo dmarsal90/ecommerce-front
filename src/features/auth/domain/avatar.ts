@@ -9,6 +9,13 @@ export function avatarProblem(file: FormDataEntryValue | null | undefined): stri
   return null;
 }
 
+/** A hue (0-359) derived from the name: looks random across users but never changes for the same one. */
+export function avatarHue(name: string): number {
+  let hash = 0;
+  for (const char of name) hash = (hash * 31 + char.codePointAt(0)!) >>> 0;
+  return hash % 360;
+}
+
 /** "Ana Pérez" -> "AP", "madonna" -> "M". */
 export function initials(name: string): string {
   const words = name.trim().split(/\s+/).filter(Boolean);

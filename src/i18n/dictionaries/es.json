@@ -136,7 +136,7 @@
       "hello": "Hola, {name}",
       "verified": "Correo verificado",
       "unverified": "Correo sin verificar",
-      "logout": "Salir",
+      "logout": "Cerrar sesión",
       "photo_title": "Foto de perfil",
       "photo_hint": "JPG, PNG o WebP, hasta 2 MB.",
       "photo_upload": "Guardar foto",

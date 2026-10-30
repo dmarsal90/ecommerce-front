@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { initials } from '../domain/avatar';
+import { avatarHue, initials } from '../domain/avatar';
 
 /** Uploaded photo, else Gravatar (when the email has one), else the user's initials. */
 export function Avatar({
@@ -22,8 +22,14 @@ export function Avatar({
   return (
     <span
       aria-hidden
-      className="bg-accent text-accent-foreground relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full font-bold select-none"
-      style={{ width: size, height: size, fontSize: size * 0.4 }}
+      className="relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full font-bold text-white select-none"
+      // 30% lightness keeps white initials above 4.5:1 contrast for every hue.
+      style={{
+        width: size,
+        height: size,
+        fontSize: size * 0.4,
+        backgroundColor: `hsl(${avatarHue(name)} 55% 30%)`,
+      }}
     >
       {initials(name)}
       {src && (

@@ -136,7 +136,7 @@
       "hello": "Olá, {name}",
       "verified": "Email verificado",
       "unverified": "Email ainda não verificado",
-      "logout": "Sair",
+      "logout": "Terminar sessão",
       "photo_title": "Foto de perfil",
       "photo_hint": "JPG, PNG ou WebP, até 2 MB.",
       "photo_upload": "Guardar foto",

@@ -31,11 +31,14 @@ export async function CartButton({ locale, dict }: { locale: Locale; dict: Dicti
         fill="none"
         stroke="currentColor"
         strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         aria-hidden
         className="size-5"
       >
-        <path d="M6 8h12l-1 12H7L6 8Z" strokeLinejoin="round" />
-        <path d="M9 8V6.5a3 3 0 0 1 6 0V8" strokeLinecap="round" />
+        <circle cx="9" cy="20" r="1.3" />
+        <circle cx="18" cy="20" r="1.3" />
+        <path d="M2.5 3.5h2.4l2.1 11.2a1.8 1.8 0 0 0 1.8 1.5h8.6a1.8 1.8 0 0 0 1.8-1.4l1.5-7H5.6" />
       </svg>
       {count > 0 && (
         <span

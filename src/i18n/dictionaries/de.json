@@ -1,6 +1,34 @@
 {
-  "meta": { "title": "Sennitwo", "description": "Mode und Schuhe mit schnellem Versand" },
-  "nav": { "home": "Start", "shop": "Shop", "cart": "Warenkorb" },
-  "theme": { "toggle": "Zwischen hellem und dunklem Modus wechseln" },
-  "language": { "label": "Sprache" }
+  "meta": {
+    "title": "Sennitwo",
+    "description": "Mode und Schuhe mit schnellem Versand"
+  },
+  "nav": {
+    "home": "Start",
+    "shop": "Shop",
+    "cart": "Warenkorb"
+  },
+  "theme": {
+    "toggle": "Zwischen hellem und dunklem Modus wechseln"
+  },
+  "language": {
+    "label": "Sprache"
+  },
+  "footer": {
+    "rights": "Alle Rechte vorbehalten."
+  },
+  "hero": {
+    "eyebrow": "Neue Saison",
+    "title": "Kleide die Straße",
+    "subtitle": "Mode und Schuhe mit schneller Lieferung.",
+    "cta": "Jetzt shoppen"
+  },
+  "brands": {
+    "title": "Top-Marken"
+  },
+  "collections": {
+    "title": "Kollektionen",
+    "items_one": "{count} Artikel",
+    "items_other": "{count} Artikel"
+  }
 }

@@ -1,6 +1,34 @@
 {
-  "meta": { "title": "Sennitwo", "description": "Moda e calzature con spedizione rapida" },
-  "nav": { "home": "Home", "shop": "Negozio", "cart": "Carrello" },
-  "theme": { "toggle": "Passa tra modalità chiara e scura" },
-  "language": { "label": "Lingua" }
+  "meta": {
+    "title": "Sennitwo",
+    "description": "Moda e calzature con spedizione rapida"
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Negozio",
+    "cart": "Carrello"
+  },
+  "theme": {
+    "toggle": "Passa tra modalità chiara e scura"
+  },
+  "language": {
+    "label": "Lingua"
+  },
+  "footer": {
+    "rights": "Tutti i diritti riservati."
+  },
+  "hero": {
+    "eyebrow": "Nuova stagione",
+    "title": "Vesti la strada",
+    "subtitle": "Moda e calzature con consegna rapida.",
+    "cta": "Acquista ora"
+  },
+  "brands": {
+    "title": "Marchi in evidenza"
+  },
+  "collections": {
+    "title": "Collezioni",
+    "items_one": "{count} articolo",
+    "items_other": "{count} articoli"
+  }
 }

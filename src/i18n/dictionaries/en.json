@@ -1,6 +1,34 @@
 {
-  "meta": { "title": "Sennitwo", "description": "Fashion and footwear with fast delivery" },
-  "nav": { "home": "Home", "shop": "Shop", "cart": "Cart" },
-  "theme": { "toggle": "Switch between light and dark mode" },
-  "language": { "label": "Language" }
+  "meta": {
+    "title": "Sennitwo",
+    "description": "Fashion and footwear with fast delivery"
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "cart": "Cart"
+  },
+  "theme": {
+    "toggle": "Switch between light and dark mode"
+  },
+  "language": {
+    "label": "Language"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  },
+  "hero": {
+    "eyebrow": "New season",
+    "title": "Dress the street",
+    "subtitle": "Fashion and footwear with fast delivery.",
+    "cta": "Shop now"
+  },
+  "brands": {
+    "title": "Featured brands"
+  },
+  "collections": {
+    "title": "Collections",
+    "items_one": "{count} item",
+    "items_other": "{count} items"
+  }
 }

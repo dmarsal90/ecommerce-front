@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { lang } from 'next/root-params';
 import { Suspense } from 'react';
 import { JsonLd } from '@/components/json-ld';
+import { AddToCartForm } from '@/features/cart';
 import {
   ProductGallery,
   ProductGrid,
@@ -116,6 +117,9 @@ async function ProductDetail({ locale, params }: { locale: Locale; params: Props
           </header>
 
           <VariantPicker
+            productId={product.id}
+            productInStock={!product.track_quantity || product.quantity > 0}
+            AddToCart={AddToCartForm}
             variants={product.variants}
             price={product.price}
             compareAt={product.compare_at_price}

@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { ApiError } from '@/lib/api/client';
+import { getCartToken } from '@/lib/cart-session';
 import { clearToken, getToken, setToken } from '@/lib/session';
 import { authApi } from './api/server';
 import { avatarProblem } from './domain/avatar';
@@ -38,7 +39,7 @@ export async function login(_: FormState, formData: FormData): Promise<FormState
   if (!parsed.data) return { fieldErrors: parsed.fieldErrors, values: echo(formData) };
 
   try {
-    await setToken((await authApi.login(locale, parsed.data)).token);
+    await setToken((await authApi.login(locale, parsed.data, await getCartToken())).token);
   } catch (error) {
     return failure(error, { code: 'invalid_credentials' }, formData);
   }
@@ -51,7 +52,7 @@ export async function register(_: FormState, formData: FormData): Promise<FormSt
   if (!parsed.data) return { fieldErrors: parsed.fieldErrors, values: echo(formData) };
 
   try {
-    await setToken((await authApi.register(locale, parsed.data)).token);
+    await setToken((await authApi.register(locale, parsed.data, await getCartToken())).token);
   } catch (error) {
     return failure(error, { field: 'email', code: 'email_taken' }, formData);
   }

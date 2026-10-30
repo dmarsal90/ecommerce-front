@@ -160,5 +160,33 @@
       "file_too_large": "La foto supera i 2 MB.",
       "file_type": "Usa un'immagine JPG, PNG o WebP."
     }
+  },
+  "cart": {
+    "title": "Il tuo carrello",
+    "open": "Carrello",
+    "empty": "Il carrello è vuoto.",
+    "empty_cta": "Inizia lo shopping",
+    "continue_shopping": "Continua con gli acquisti",
+    "add": "Aggiungi al carrello",
+    "added": "Aggiunto al carrello.",
+    "view": "Vedi carrello",
+    "remove": "Rimuovi",
+    "qty_dec": "Diminuisci la quantità di {name}",
+    "qty_inc": "Aumenta la quantità di {name}",
+    "qty": "Quantità",
+    "unit": "Cad.",
+    "subtotal": "Subtotale",
+    "note": "Spedizione e tasse vengono calcolate al pagamento.",
+    "checkout": "Paga",
+    "checkout_login": "Accedi per pagare",
+    "shipping_remaining": "Aggiungi ancora {amount} per la spedizione gratuita",
+    "shipping_free": "Hai la spedizione gratuita!",
+    "no_image": "Nessuna immagine",
+    "err_unavailable": "Questo articolo è esaurito o non più disponibile.",
+    "err_throttled": "Troppi tentativi. Riprova tra un minuto.",
+    "err_generic": "Qualcosa è andato storto. Riprova.",
+    "pick": "Scegli prima le opzioni",
+    "open_count_one": "Carrello, {count} articolo",
+    "open_count_other": "Carrello, {count} articoli"
   }
 }

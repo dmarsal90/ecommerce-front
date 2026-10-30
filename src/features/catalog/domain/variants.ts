@@ -3,7 +3,7 @@ import type { Variant } from './schemas';
 export interface OptionGroup {
   slug: string;
   name: string;
-  values: { slug: string; label: string; swatch: string | null }[];
+  values: { slug: string; label: string; swatch: string | null; order: number }[];
 }
 
 /** One slug per attribute, e.g. `{ color: 'black', size: 'l' }`. */
@@ -23,12 +23,21 @@ export function optionGroups(variants: Variant[]): OptionGroup[] {
         values: [],
       };
       if (!group.values.some((v) => v.slug === av.slug)) {
-        group.values.push({ slug: av.slug, label: av.value, swatch: av.color_code });
+        group.values.push({
+          slug: av.slug,
+          label: av.value,
+          swatch: av.color_code,
+          order: av.sort_order ?? 0,
+        });
       }
       groups.set(group.slug, group);
     }
   }
-  return [...groups.values()];
+  // Variants come in creation order; show each option list in the shop's own order (XS, S, M, L...).
+  return [...groups.values()].map((group) => ({
+    ...group,
+    values: group.values.toSorted((a, b) => a.order - b.order),
+  }));
 }
 
 const matches = (variant: Variant, selection: Selection) =>

@@ -1,8 +1,8 @@
-import Link from 'next/link';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/get-dictionary';
-import { GENDERS, type ProductFilters } from '../domain/filters';
+import { GENDERS, toUrlParams, type ProductFilters } from '../domain/filters';
 import type { FilterOptions, Taxonomy } from '../domain/schemas';
+import { FiltersLive } from './filters-live';
 
 const control = 'border-border bg-surface rounded-control w-full border px-3 py-2';
 const chip =
@@ -98,21 +98,32 @@ export function FiltersForm({
   const toOptions = (list: Taxonomy[]) => list.map((t) => ({ value: t.slug, label: t.name }));
 
   return (
-    <form action={`/${locale}/shop`} method="get" role="search" className="space-y-4">
-      <label className="block space-y-1 text-sm">
-        <span>{s.search}</span>
-        <input
-          type="search"
-          name="search"
-          defaultValue={filters.search}
-          maxLength={255}
-          className={control}
-        />
-      </label>
-
-      <details className="bg-surface border-border rounded-panel border p-4" open={hasActiveFilters(filters)}>
-        <summary className="cursor-pointer font-medium">{s.filters}</summary>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <FiltersLive
+      action={`/${locale}/shop`}
+      fieldsKey={toUrlParams({ ...filters, page: 1 }).toString()}
+      summary={s.filters}
+      initialOpen={hasActiveFilters(filters)}
+      applyLabel={s.apply}
+      clearLabel={s.clear}
+      clearHref={`/${locale}/shop`}
+      hasActive={hasActiveFilters(filters)}
+      top={
+        <>
+          <label className="block space-y-1 text-sm">
+            <span>{s.search}</span>
+            <input
+              type="search"
+              name="search"
+              defaultValue={filters.search}
+              maxLength={255}
+              className={control}
+            />
+          </label>
+          {filters.sort !== 'newest' && <input type="hidden" name="sort" value={filters.sort} />}
+        </>
+      }
+      panel={
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Select
             name="category"
             label={s.category}
@@ -183,24 +194,8 @@ export function FiltersForm({
             />
           </div>
         </div>
-      </details>
-
-      {filters.sort !== 'newest' && <input type="hidden" name="sort" value={filters.sort} />}
-
-      <div className="flex items-center gap-4">
-        <button
-          type="submit"
-          className="bg-accent text-accent-foreground rounded-full px-5 py-2 font-semibold"
-        >
-          {s.apply}
-        </button>
-        {hasActiveFilters(filters) && (
-          <Link href={`/${locale}/shop`} className="text-muted hover:text-foreground text-sm underline">
-            {s.clear}
-          </Link>
-        )}
-      </div>
-    </form>
+      }
+    />
   );
 }
 

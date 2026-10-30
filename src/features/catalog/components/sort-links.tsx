@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/get-dictionary';
 import { SORTS, toUrlParams, type ProductFilters } from '../domain/filters';
+import { ShopLink } from './shop-navigation';
 
 /** Plain links keep sorting working without JavaScript and the current filters intact. */
 export function SortLinks({
@@ -20,14 +20,14 @@ export function SortLinks({
         const href = `/${locale}/shop?${toUrlParams({ ...filters, sort, page: 1 })}`;
         const current = sort === filters.sort;
         return (
-          <Link
+          <ShopLink
             key={sort}
             href={href}
             aria-current={current ? 'true' : undefined}
             className={`rounded-full border px-3 py-1 text-sm ${current ? 'bg-foreground text-background border-foreground' : 'border-border hover:border-accent'}`}
           >
             {dict.shop[sort]}
-          </Link>
+          </ShopLink>
         );
       })}
     </nav>

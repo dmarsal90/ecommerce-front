@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/get-dictionary';
 import { toUrlParams, type ProductFilters } from '../domain/filters';
+import { ShopLink } from './shop-navigation';
 
 export function Pagination({
   filters,
@@ -21,17 +21,17 @@ export function Pagination({
   return (
     <nav aria-label={dict.shop.pagination} className="mt-12 flex items-center justify-center gap-4">
       {filters.page > 1 && (
-        <Link href={href(filters.page - 1)} rel="prev" className={link}>
+        <ShopLink scrollToResults href={href(filters.page - 1)} rel="prev" className={link}>
           {dict.shop.prev}
-        </Link>
+        </ShopLink>
       )}
       <span className="text-muted text-sm">
         {dict.shop.page.replace('{page}', String(filters.page)).replace('{total}', String(lastPage))}
       </span>
       {filters.page < lastPage && (
-        <Link href={href(filters.page + 1)} rel="next" className={link}>
+        <ShopLink scrollToResults href={href(filters.page + 1)} rel="next" className={link}>
           {dict.shop.next}
-        </Link>
+        </ShopLink>
       )}
     </nav>
   );

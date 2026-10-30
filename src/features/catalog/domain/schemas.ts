@@ -19,6 +19,7 @@ const attributeValueSchema = z.object({
   value: z.string(),
   slug: z.string(),
   color_code: z.string().nullable(),
+  sort_order: z.number().optional(),
   attribute: z.object({ slug: z.string(), name: z.string() }).optional(),
 });
 

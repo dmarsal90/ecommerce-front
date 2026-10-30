@@ -1,6 +1,20 @@
 {
-  "meta": { "title": "Sennitwo", "description": "Fashion and footwear with fast delivery" },
-  "nav": { "home": "Home", "shop": "Shop", "cart": "Cart" },
-  "theme": { "toggle": "Switch between light and dark mode" },
-  "language": { "label": "Language" }
+  "meta": {
+    "title": "Sennitwo",
+    "description": "Fashion and footwear with fast delivery"
+  },
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "cart": "Cart"
+  },
+  "theme": {
+    "toggle": "Switch between light and dark mode"
+  },
+  "language": {
+    "label": "Language"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
 }

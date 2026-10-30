@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation';
 import { Bricolage_Grotesque, Inter } from 'next/font/google';
 import { lang } from 'next/root-params';
 import { ThemeScript } from '@/components/theme/theme-script';
-import { ThemeToggle } from '@/components/theme/theme-toggle';
-import { LanguageSwitcher } from '@/components/language-switcher';
+import { SiteFooter } from '@/components/layout/site-footer';
+import { SiteHeader } from '@/components/layout/site-header';
 import { hasLocale, locales } from '@/i18n/config';
 import { getDictionary } from '@/i18n/get-dictionary';
 import { env } from '@/lib/env';
@@ -38,14 +38,9 @@ export default async function RootLayout({ children }: LayoutProps<'/[lang]'>) {
         <ThemeScript />
       </head>
       <body className="min-h-dvh">
-        <header className="mx-auto flex max-w-7xl items-center justify-between gap-4 p-4">
-          <span className="font-display text-xl font-bold">{dict.meta.title}</span>
-          <div className="flex items-center gap-2">
-            <LanguageSwitcher current={locale} label={dict.language.label} />
-            <ThemeToggle label={dict.theme.toggle} />
-          </div>
-        </header>
+        <SiteHeader locale={locale} dict={dict} />
         <main className="mx-auto max-w-7xl p-4">{children}</main>
+        <SiteFooter dict={dict} />
       </body>
     </html>
   );

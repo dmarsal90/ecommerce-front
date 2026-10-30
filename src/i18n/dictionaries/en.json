@@ -80,5 +80,85 @@
     "rating": "{rating} out of 5 stars",
     "related": "You may also like",
     "details": "Details"
+  },
+  "auth": {
+    "menu": {
+      "login": "Sign in",
+      "account": "Account",
+      "open": "Open account menu"
+    },
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "password_confirmation": "Confirm password"
+    },
+    "login": {
+      "title": "Sign in",
+      "submit": "Sign in",
+      "forgot": "Forgot your password?",
+      "no_account": "New here?",
+      "register": "Create an account"
+    },
+    "register": {
+      "title": "Create an account",
+      "submit": "Create account",
+      "have_account": "Already have an account?",
+      "login": "Sign in"
+    },
+    "forgot": {
+      "title": "Forgot your password?",
+      "intro": "Enter your email and we'll send you a link to choose a new one.",
+      "submit": "Send link",
+      "sent": "If that email has an account, a reset link is on its way.",
+      "back": "Back to sign in"
+    },
+    "reset": {
+      "title": "Choose a new password",
+      "submit": "Save password",
+      "done": "Password updated. Sign in with your new password."
+    },
+    "verify": {
+      "pending_title": "Check your inbox",
+      "pending_text": "We sent you a link to verify your email. You need it to place orders.",
+      "success_title": "Email verified",
+      "success_text": "Thanks! You can now place orders.",
+      "already_title": "Already verified",
+      "already_text": "This email was already verified.",
+      "invalid_title": "Link not valid",
+      "invalid_text": "The link is invalid or has expired. Sign in and request a new one.",
+      "resend": "Resend email",
+      "resent": "Verification email sent.",
+      "continue": "Continue shopping"
+    },
+    "account": {
+      "title": "My account",
+      "hello": "Hello, {name}",
+      "verified": "Email verified",
+      "unverified": "Email not verified yet",
+      "logout": "Sign out",
+      "photo_title": "Profile photo",
+      "photo_hint": "JPG, PNG or WebP, up to 2 MB.",
+      "photo_upload": "Save photo",
+      "photo_choose": "Choose a photo",
+      "photo_remove": "Remove photo",
+      "photo_saved": "Photo updated."
+    },
+    "errors": {
+      "required": "This field is required.",
+      "email": "Enter a valid email address.",
+      "min_password": "Use at least 8 characters.",
+      "mismatch": "The passwords don't match.",
+      "too_long": "That is too long.",
+      "invalid_credentials": "Email or password is incorrect.",
+      "email_taken": "That email is already registered.",
+      "throttled": "Too many attempts. Try again in a minute.",
+      "generic": "Something went wrong. Please try again.",
+      "invalid_link": "This link is invalid or has expired. Request a new one.",
+      "not_logged_in": "Sign in to continue.",
+      "file_required": "Choose a photo first.",
+      "file_too_large": "The photo is larger than 2 MB.",
+      "file_type": "Use a JPG, PNG or WebP image."
+    }
   }
 }

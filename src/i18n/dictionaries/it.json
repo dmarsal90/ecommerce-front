@@ -80,5 +80,85 @@
     "rating": "{rating} stelle su 5",
     "related": "Potrebbe piacerti anche",
     "details": "Dettagli"
+  },
+  "auth": {
+    "menu": {
+      "login": "Accedi",
+      "account": "Account",
+      "open": "Apri il menu dell'account"
+    },
+    "fields": {
+      "name": "Nome",
+      "email": "Email",
+      "password": "Password",
+      "password_confirmation": "Conferma password"
+    },
+    "login": {
+      "title": "Accedi",
+      "submit": "Accedi",
+      "forgot": "Hai dimenticato la password?",
+      "no_account": "Prima volta qui?",
+      "register": "Crea un account"
+    },
+    "register": {
+      "title": "Crea un account",
+      "submit": "Crea account",
+      "have_account": "Hai già un account?",
+      "login": "Accedi"
+    },
+    "forgot": {
+      "title": "Hai dimenticato la password?",
+      "intro": "Inserisci la tua email e ti invieremo un link per sceglierne una nuova.",
+      "submit": "Invia link",
+      "sent": "Se l'email ha un account, il link di reimpostazione è in arrivo.",
+      "back": "Torna all'accesso"
+    },
+    "reset": {
+      "title": "Scegli una nuova password",
+      "submit": "Salva password",
+      "done": "Password aggiornata. Accedi con la nuova password."
+    },
+    "verify": {
+      "pending_title": "Controlla la tua posta",
+      "pending_text": "Ti abbiamo inviato un link per verificare la tua email. Serve per effettuare ordini.",
+      "success_title": "Email verificata",
+      "success_text": "Grazie! Ora puoi effettuare ordini.",
+      "already_title": "Già verificata",
+      "already_text": "Questa email era già stata verificata.",
+      "invalid_title": "Link non valido",
+      "invalid_text": "Il link non è valido o è scaduto. Accedi e richiedine uno nuovo.",
+      "resend": "Invia di nuovo",
+      "resent": "Email di verifica inviata.",
+      "continue": "Continua con gli acquisti"
+    },
+    "account": {
+      "title": "Il mio account",
+      "hello": "Ciao, {name}",
+      "verified": "Email verificata",
+      "unverified": "Email non ancora verificata",
+      "logout": "Esci",
+      "photo_title": "Foto del profilo",
+      "photo_hint": "JPG, PNG o WebP, fino a 2 MB.",
+      "photo_upload": "Salva foto",
+      "photo_choose": "Scegli una foto",
+      "photo_remove": "Rimuovi foto",
+      "photo_saved": "Foto aggiornata."
+    },
+    "errors": {
+      "required": "Questo campo è obbligatorio.",
+      "email": "Inserisci un indirizzo email valido.",
+      "min_password": "Usa almeno 8 caratteri.",
+      "mismatch": "Le password non coincidono.",
+      "too_long": "Troppo lungo.",
+      "invalid_credentials": "Email o password non corretti.",
+      "email_taken": "Questa email è già registrata.",
+      "throttled": "Troppi tentativi. Riprova tra un minuto.",
+      "generic": "Qualcosa è andato storto. Riprova.",
+      "invalid_link": "Il link non è valido o è scaduto. Richiedine uno nuovo.",
+      "not_logged_in": "Accedi per continuare.",
+      "file_required": "Scegli prima una foto.",
+      "file_too_large": "La foto supera i 2 MB.",
+      "file_type": "Usa un'immagine JPG, PNG o WebP."
+    }
   }
 }

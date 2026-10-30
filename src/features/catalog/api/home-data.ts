@@ -6,7 +6,8 @@ import { brandSchema, collectionSchema, type Brand, type Collection } from '../d
 
 const api = createApiClient(new URL('/api/', env.NEXT_PUBLIC_API_URL).href);
 
-// A failing API must not take the whole home page down; sections simply render nothing.
+// A failing API must not take the whole home page down (or the build, in CI there is no API): sections render nothing.
+// shortcut: that empty result is cached for the cacheLife (minutes); revisit with cache tags if outages get long.
 async function list<S extends z.ZodType>(path: string, item: S): Promise<z.infer<S>[]> {
   try {
     return (await api.get(path, z.object({ data: z.array(item) }))).data;

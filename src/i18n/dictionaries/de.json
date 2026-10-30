@@ -80,5 +80,85 @@
     "rating": "{rating} von 5 Sternen",
     "related": "Das könnte dir auch gefallen",
     "details": "Details"
+  },
+  "auth": {
+    "menu": {
+      "login": "Anmelden",
+      "account": "Konto",
+      "open": "Kontomenü öffnen"
+    },
+    "fields": {
+      "name": "Name",
+      "email": "E-Mail",
+      "password": "Passwort",
+      "password_confirmation": "Passwort bestätigen"
+    },
+    "login": {
+      "title": "Anmelden",
+      "submit": "Anmelden",
+      "forgot": "Passwort vergessen?",
+      "no_account": "Neu hier?",
+      "register": "Konto erstellen"
+    },
+    "register": {
+      "title": "Konto erstellen",
+      "submit": "Konto erstellen",
+      "have_account": "Schon ein Konto?",
+      "login": "Anmelden"
+    },
+    "forgot": {
+      "title": "Passwort vergessen?",
+      "intro": "Gib deine E-Mail-Adresse ein, wir senden dir einen Link für ein neues Passwort.",
+      "submit": "Link senden",
+      "sent": "Falls es zu dieser E-Mail ein Konto gibt, ist der Link unterwegs.",
+      "back": "Zurück zur Anmeldung"
+    },
+    "reset": {
+      "title": "Neues Passwort wählen",
+      "submit": "Passwort speichern",
+      "done": "Passwort aktualisiert. Melde dich mit deinem neuen Passwort an."
+    },
+    "verify": {
+      "pending_title": "Prüfe dein Postfach",
+      "pending_text": "Wir haben dir einen Link zur Bestätigung deiner E-Mail geschickt. Du brauchst ihn, um zu bestellen.",
+      "success_title": "E-Mail bestätigt",
+      "success_text": "Danke! Du kannst jetzt bestellen.",
+      "already_title": "Bereits bestätigt",
+      "already_text": "Diese E-Mail wurde bereits bestätigt.",
+      "invalid_title": "Link ungültig",
+      "invalid_text": "Der Link ist ungültig oder abgelaufen. Melde dich an und fordere einen neuen an.",
+      "resend": "E-Mail erneut senden",
+      "resent": "Bestätigungs-E-Mail gesendet.",
+      "continue": "Weiter einkaufen"
+    },
+    "account": {
+      "title": "Mein Konto",
+      "hello": "Hallo, {name}",
+      "verified": "E-Mail bestätigt",
+      "unverified": "E-Mail noch nicht bestätigt",
+      "logout": "Abmelden",
+      "photo_title": "Profilfoto",
+      "photo_hint": "JPG, PNG oder WebP, bis 2 MB.",
+      "photo_upload": "Foto speichern",
+      "photo_choose": "Foto auswählen",
+      "photo_remove": "Foto entfernen",
+      "photo_saved": "Foto aktualisiert."
+    },
+    "errors": {
+      "required": "Dieses Feld ist erforderlich.",
+      "email": "Gib eine gültige E-Mail-Adresse ein.",
+      "min_password": "Verwende mindestens 8 Zeichen.",
+      "mismatch": "Die Passwörter stimmen nicht überein.",
+      "too_long": "Das ist zu lang.",
+      "invalid_credentials": "E-Mail oder Passwort ist falsch.",
+      "email_taken": "Diese E-Mail ist bereits registriert.",
+      "throttled": "Zu viele Versuche. Versuche es in einer Minute erneut.",
+      "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+      "invalid_link": "Dieser Link ist ungültig oder abgelaufen. Fordere einen neuen an.",
+      "not_logged_in": "Melde dich an, um fortzufahren.",
+      "file_required": "Wähle zuerst ein Foto.",
+      "file_too_large": "Das Foto ist größer als 2 MB.",
+      "file_type": "Verwende ein JPG-, PNG- oder WebP-Bild."
+    }
   }
 }

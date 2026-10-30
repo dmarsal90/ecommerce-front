@@ -80,5 +80,85 @@
     "rating": "{rating} étoiles sur 5",
     "related": "Vous aimerez aussi",
     "details": "Détails"
+  },
+  "auth": {
+    "menu": {
+      "login": "Se connecter",
+      "account": "Compte",
+      "open": "Ouvrir le menu du compte"
+    },
+    "fields": {
+      "name": "Nom",
+      "email": "E-mail",
+      "password": "Mot de passe",
+      "password_confirmation": "Confirmer le mot de passe"
+    },
+    "login": {
+      "title": "Se connecter",
+      "submit": "Se connecter",
+      "forgot": "Mot de passe oublié ?",
+      "no_account": "Nouveau ici ?",
+      "register": "Créer un compte"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "submit": "Créer le compte",
+      "have_account": "Vous avez déjà un compte ?",
+      "login": "Se connecter"
+    },
+    "forgot": {
+      "title": "Mot de passe oublié ?",
+      "intro": "Saisissez votre e-mail et nous vous enverrons un lien pour en choisir un nouveau.",
+      "submit": "Envoyer le lien",
+      "sent": "Si cet e-mail a un compte, le lien est en route.",
+      "back": "Retour à la connexion"
+    },
+    "reset": {
+      "title": "Choisissez un nouveau mot de passe",
+      "submit": "Enregistrer le mot de passe",
+      "done": "Mot de passe mis à jour. Connectez-vous avec le nouveau."
+    },
+    "verify": {
+      "pending_title": "Vérifiez votre boîte de réception",
+      "pending_text": "Nous vous avons envoyé un lien pour vérifier votre e-mail. Il est nécessaire pour commander.",
+      "success_title": "E-mail vérifié",
+      "success_text": "Merci ! Vous pouvez maintenant commander.",
+      "already_title": "Déjà vérifié",
+      "already_text": "Cet e-mail était déjà vérifié.",
+      "invalid_title": "Lien non valide",
+      "invalid_text": "Le lien est invalide ou a expiré. Connectez-vous et demandez-en un nouveau.",
+      "resend": "Renvoyer l'e-mail",
+      "resent": "E-mail de vérification envoyé.",
+      "continue": "Continuer mes achats"
+    },
+    "account": {
+      "title": "Mon compte",
+      "hello": "Bonjour, {name}",
+      "verified": "E-mail vérifié",
+      "unverified": "E-mail pas encore vérifié",
+      "logout": "Se déconnecter",
+      "photo_title": "Photo de profil",
+      "photo_hint": "JPG, PNG ou WebP, jusqu'à 2 Mo.",
+      "photo_upload": "Enregistrer la photo",
+      "photo_choose": "Choisir une photo",
+      "photo_remove": "Supprimer la photo",
+      "photo_saved": "Photo mise à jour."
+    },
+    "errors": {
+      "required": "Ce champ est obligatoire.",
+      "email": "Saisissez une adresse e-mail valide.",
+      "min_password": "Utilisez au moins 8 caractères.",
+      "mismatch": "Les mots de passe ne correspondent pas.",
+      "too_long": "C'est trop long.",
+      "invalid_credentials": "E-mail ou mot de passe incorrect.",
+      "email_taken": "Cet e-mail est déjà enregistré.",
+      "throttled": "Trop de tentatives. Réessayez dans une minute.",
+      "generic": "Un problème est survenu. Réessayez.",
+      "invalid_link": "Ce lien est invalide ou a expiré. Demandez-en un nouveau.",
+      "not_logged_in": "Connectez-vous pour continuer.",
+      "file_required": "Choisissez d'abord une photo.",
+      "file_too_large": "La photo dépasse 2 Mo.",
+      "file_type": "Utilisez une image JPG, PNG ou WebP."
+    }
   }
 }

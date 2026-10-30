@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Brand } from '@/features/catalog';
 import type { Locale } from '@/i18n/config';
@@ -17,7 +18,19 @@ export function BrandMarquee({ brands, label, locale }: { brands: Brand[]; label
             tabIndex={hidden ? -1 : undefined}
             className="hover:text-accent-ink transition-colors"
           >
-            {brand.name}
+            {brand.logo ? (
+              // shortcut: unoptimized until the image host is known (same as product-grid).
+              <Image
+                src={brand.logo}
+                alt={brand.name}
+                width={160}
+                height={48}
+                unoptimized
+                className="h-10 w-auto object-contain"
+              />
+            ) : (
+              brand.name
+            )}
           </Link>
         </li>
       ))}

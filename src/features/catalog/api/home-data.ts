@@ -23,6 +23,14 @@ export async function getFeaturedBrands(): Promise<Brand[]> {
   return list('brands/featured', brandSchema);
 }
 
+const bannerSchema = z.object({ image: z.string().nullable() });
+
+export async function getHeroImage(): Promise<string | null> {
+  'use cache';
+  cacheLife('minutes');
+  return (await list('banners?position=homepage_hero', bannerSchema)).find((b) => b.image)?.image ?? null;
+}
+
 export async function getCollections(): Promise<Collection[]> {
   'use cache';
   cacheLife('minutes');

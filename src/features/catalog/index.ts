@@ -1,4 +1,4 @@
-export { getCollections, getFeaturedBrands } from './api/home-data';
+export { getCollections, getFeaturedBrands, getHeroImage } from './api/home-data';
 export {
   getBrands,
   getCategories,

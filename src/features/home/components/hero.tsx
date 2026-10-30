@@ -1,16 +1,26 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/get-dictionary';
 import { HeroReveal } from './hero-reveal';
 
-export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+export function Hero({ locale, dict, image }: { locale: Locale; dict: Dictionary; image: string | null }) {
   return (
-    <section className="bg-surface rounded-card px-6 py-16 md:px-12 md:py-24">
+    <section
+      className={`bg-surface rounded-card relative isolate overflow-hidden px-6 py-16 md:px-12 md:py-24 ${image ? 'text-white' : ''}`}
+    >
+      {image && (
+        <>
+          {/* shortcut: unoptimized until the image host is known (same as product-grid). */}
+          <Image src={image} alt="" fill priority unoptimized sizes="100vw" className="-z-20 object-cover" />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/75 to-black/20" />
+        </>
+      )}
       <HeroReveal className="max-w-3xl">
         <p
           data-reveal
           data-reveal-fade
-          className="text-accent-ink text-sm font-semibold tracking-widest uppercase"
+          className={`${image ? 'text-white' : 'text-accent-ink'} text-sm font-semibold tracking-widest uppercase`}
         >
           {dict.hero.eyebrow}
         </p>
@@ -20,7 +30,11 @@ export function Hero({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         >
           {dict.hero.title}
         </h1>
-        <p data-reveal data-reveal-fade className="text-muted mt-6 max-w-xl text-lg">
+        <p
+          data-reveal
+          data-reveal-fade
+          className={`${image ? 'text-white/85' : 'text-muted'} mt-6 max-w-xl text-lg`}
+        >
           {dict.hero.subtitle}
         </p>
         <Link

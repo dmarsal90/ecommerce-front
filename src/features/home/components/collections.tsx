@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Collection } from '@/features/catalog';
 import type { Locale } from '@/i18n/config';
@@ -22,10 +23,28 @@ export function Collections({
           <li key={collection.id}>
             <Link
               href={`/${locale}/collections/${collection.slug}`}
-              className="bg-surface border-border rounded-card hover:border-accent-ink flex h-full min-h-48 flex-col justify-end gap-1 border p-6 transition-colors"
+              className="bg-surface border-border rounded-card hover:border-accent-ink relative isolate flex h-full min-h-48 flex-col justify-end gap-1 overflow-hidden border p-6 transition-colors"
             >
-              <h3 className="font-display text-2xl font-bold">{collection.name}</h3>
-              {collection.description && <p className="text-muted">{collection.description}</p>}
+              {collection.image && (
+                // shortcut: unoptimized until the image host is known (same as product-grid).
+                <Image
+                  src={collection.image}
+                  alt=""
+                  fill
+                  unoptimized
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  className="-z-20 object-cover"
+                />
+              )}
+              {collection.image && (
+                <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/70 to-transparent" />
+              )}
+              <h3 className={`font-display text-2xl font-bold ${collection.image ? 'text-white' : ''}`}>
+                {collection.name}
+              </h3>
+              {collection.description && (
+                <p className={collection.image ? 'text-white/80' : 'text-muted'}>{collection.description}</p>
+              )}
               {collection.products_count !== undefined && (
                 <p className="text-accent-ink text-sm font-semibold">
                   {dict.collections[

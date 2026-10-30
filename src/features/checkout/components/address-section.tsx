@@ -13,7 +13,7 @@ type Copy = Dictionary['checkout'];
 const errorText = (copy: Copy, code?: string) =>
   code ? (copy[`err_${code}` as keyof Copy] ?? copy.err_generic) : undefined;
 
-function NewAddressForm({
+export function NewAddressForm({
   type,
   locale,
   copy,
@@ -22,7 +22,8 @@ function NewAddressForm({
   type: 'shipping' | 'billing';
   locale: string;
   copy: Copy;
-  onAdded: (id: number) => void;
+  /** Optional: pages that only list addresses (server components) cannot pass a callback. */
+  onAdded?: (id: number) => void;
 }) {
   const router = useRouter();
   const [state, action, pending] = useActionState<AddressState, FormData>(addAddress, {});
@@ -32,7 +33,7 @@ function NewAddressForm({
 
   useEffect(() => {
     if (state.ok && state.addressId) {
-      onAdded(state.addressId);
+      onAdded?.(state.addressId);
       router.refresh();
     }
     // Run once per successful save.
@@ -150,7 +151,7 @@ function NewAddressForm({
         <button
           type="submit"
           disabled={pending}
-          className="border-border hover:border-accent rounded-full border px-5 py-2 font-semibold disabled:opacity-60"
+          className="border-border hover:border-accent-ink rounded-full border px-5 py-2 font-semibold disabled:opacity-60"
         >
           {copy.save_address}
         </button>
@@ -188,7 +189,7 @@ export function AddressSection({
           {addresses.map((a) => (
             <label
               key={a.id}
-              className="border-border has-[:checked]:border-accent has-[:checked]:bg-surface rounded-panel flex cursor-pointer gap-3 border p-3"
+              className="border-border has-[:checked]:border-accent-ink has-[:checked]:bg-surface rounded-panel flex cursor-pointer gap-3 border p-3"
             >
               <input
                 type="radio"

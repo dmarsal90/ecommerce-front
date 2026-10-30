@@ -9,6 +9,7 @@ export {
 } from './api/shop-data';
 export { createProductsApi } from './api/products';
 export { parseFilters, toSearchParams, toUrlParams, GENDERS, SORTS } from './domain/filters';
+export { breadcrumbJsonLd, productJsonLd } from './domain/structured-data';
 export type { Gender, ProductFilters, Sort } from './domain/filters';
 export type {
   Brand,

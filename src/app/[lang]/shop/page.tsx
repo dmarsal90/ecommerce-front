@@ -12,16 +12,19 @@ import {
   getFilterOptions,
   getProductPage,
   parseFilters,
+  toUrlParams,
 } from '@/features/catalog';
 import { defaultLocale, hasLocale, locales, type Locale } from '@/i18n/config';
 import { getDictionary } from '@/i18n/get-dictionary';
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await lang();
+export async function generateMetadata({ searchParams }: PageProps<'/[lang]/shop'>): Promise<Metadata> {
+  const [locale, params] = await Promise.all([lang(), searchParams]);
   if (!hasLocale(locale)) notFound();
   const dict = await getDictionary(locale);
   return {
     title: dict.shop.title,
+    // Filter and page combinations are thin duplicates of the plain listing; keep them out of the index.
+    robots: toUrlParams(parseFilters(params)).size > 0 ? { index: false, follow: true } : undefined,
     alternates: {
       canonical: `/${locale}/shop`,
       languages: {

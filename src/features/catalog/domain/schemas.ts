@@ -1,6 +1,11 @@
 import { z } from 'zod';
 
-export const brandSchema = z.object({ id: z.number(), name: z.string(), slug: z.string() });
+export const brandSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  slug: z.string(),
+  logo: z.string().nullable(),
+});
 
 export const collectionSchema = z.object({
   id: z.number(),

@@ -22,7 +22,7 @@ export async function AccountMenu({ locale, dict }: { locale: Locale; dict: Dict
     return (
       <Link
         href={`/${locale}/login`}
-        className="border-border hover:border-accent rounded-full border px-4 py-2 text-sm font-medium transition-colors"
+        className="border-border hover:border-accent rounded-full border px-3 py-2 text-sm font-medium transition-colors sm:px-4"
       >
         {dict.auth.menu.login}
       </Link>

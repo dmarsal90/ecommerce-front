@@ -38,7 +38,7 @@ async function VerifyContent({
         (token ? (
           <ResendForm locale={locale} copy={dict.auth} />
         ) : (
-          <Link href={`/${locale}/login?next=/${locale}/verify-email`} className="text-accent underline">
+          <Link href={`/${locale}/login?next=/${locale}/verify-email`} className="text-accent-ink underline">
             {dict.auth.login.submit}
           </Link>
         ))}

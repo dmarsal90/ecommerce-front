@@ -5,7 +5,7 @@ import type { Review } from '../domain/schemas';
 export function Stars({ rating, dict }: { rating: number; dict: Dictionary }) {
   const rounded = Math.round(rating);
   return (
-    <span className="text-accent whitespace-nowrap">
+    <span className="text-accent-ink whitespace-nowrap">
       <span aria-hidden>
         {'★'.repeat(rounded)}
         <span className="text-border">{'★'.repeat(5 - rounded)}</span>

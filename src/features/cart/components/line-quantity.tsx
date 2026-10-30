@@ -7,7 +7,7 @@ import { setQuantity, type CartState } from '../actions';
 import { stepQuantity } from '../domain/shipping';
 
 const step =
-  'border-border hover:border-accent size-9 rounded-full border text-lg leading-none disabled:opacity-50';
+  'border-border hover:border-accent-ink size-9 rounded-full border text-lg leading-none disabled:opacity-50';
 
 /** One form, three submit buttons: the clicked one sends its own `quantity`, so it works without JavaScript. */
 export function LineQuantity({

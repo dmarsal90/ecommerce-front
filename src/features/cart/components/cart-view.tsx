@@ -116,7 +116,7 @@ export function CartView({
               className="bg-border h-2 overflow-hidden rounded-full"
             >
               <div
-                className="bg-accent h-full rounded-full transition-[width] duration-500"
+                className="bg-accent-ink h-full rounded-full transition-[width] duration-500"
                 style={{ width: `${shipping.progress * 100}%` }}
               />
             </div>

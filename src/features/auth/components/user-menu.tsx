@@ -51,7 +51,7 @@ export function UserMenu({
         aria-expanded={open}
         aria-controls="user-menu"
         onClick={() => setOpen(!open)}
-        className="border-border hover:border-accent block rounded-full border-2 p-0.5 transition-colors"
+        className="border-border hover:border-accent-ink block rounded-full border-2 p-0.5 transition-colors"
       >
         <Avatar name={user.name} photo={user.avatar_url} gravatar={gravatar} size={36} />
       </button>

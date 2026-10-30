@@ -15,7 +15,7 @@ export function BrandMarquee({ brands, label, locale }: { brands: Brand[]; label
           <Link
             href={`/${locale}/shop?brand=${encodeURIComponent(brand.slug)}`}
             tabIndex={hidden ? -1 : undefined}
-            className="hover:text-accent transition-colors"
+            className="hover:text-accent-ink transition-colors"
           >
             {brand.name}
           </Link>

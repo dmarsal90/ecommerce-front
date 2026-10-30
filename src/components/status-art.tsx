@@ -38,7 +38,7 @@ export function SearchArt() {
           r="30"
           fill="var(--surface)"
           fillOpacity="0.75"
-          stroke="var(--accent)"
+          stroke="var(--accent-ink)"
           strokeWidth="7"
         />
         <text
@@ -48,7 +48,7 @@ export function SearchArt() {
           textAnchor="middle"
           fontSize="34"
           fontWeight="700"
-          fill="var(--accent)"
+          fill="var(--accent-ink)"
           fontFamily="var(--font-heading), system-ui, sans-serif"
         >
           ?
@@ -109,12 +109,12 @@ export function ShieldArt() {
           <path d={outline} />
         </clipPath>
       </defs>
-      <path className="art-ring" d={outline} stroke="var(--accent)" strokeWidth="3" />
+      <path className="art-ring" d={outline} stroke="var(--accent-ink)" strokeWidth="3" />
       <g className="art-shield">
         <path
           d={outline}
           fill="var(--surface)"
-          stroke="var(--accent)"
+          stroke="var(--accent-ink)"
           strokeWidth="7"
           strokeLinejoin="round"
         />
@@ -125,7 +125,7 @@ export function ShieldArt() {
             y="92"
             width="160"
             height="14"
-            fill="var(--accent)"
+            fill="var(--accent-ink)"
             opacity="0.18"
           />
         </g>

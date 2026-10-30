@@ -21,7 +21,7 @@ export default async function ForgotPasswordPage() {
     <AuthShell title={auth.forgot.title} intro={auth.forgot.intro}>
       <ForgotForm locale={locale} copy={auth} />
       <p className="text-sm">
-        <Link href={`/${locale}/login`} className="text-accent underline">
+        <Link href={`/${locale}/login`} className="text-accent-ink underline">
           {auth.forgot.back}
         </Link>
       </p>

@@ -134,7 +134,7 @@ export function LoginForm({ locale, next, copy }: { locale: Locale; next?: strin
             state={state}
           />
           <p className="text-sm">
-            <Link href={`/${locale}/forgot-password`} className="text-accent underline">
+            <Link href={`/${locale}/forgot-password`} className="text-accent-ink underline">
               {copy.login.forgot}
             </Link>
           </p>

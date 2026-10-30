@@ -46,7 +46,7 @@ function ProductCard({ product, locale, dict }: { product: Product; locale: Loca
             {product.brand && (
               <p className="text-muted text-xs tracking-wide uppercase">{product.brand.name}</p>
             )}
-            <h3 className="group-hover:text-accent font-medium">{product.name}</h3>
+            <h3 className="group-hover:text-accent-ink font-medium">{product.name}</h3>
             <Price amount={product.price} compareAt={product.compare_at_price} locale={locale} />
           </div>
         </Link>

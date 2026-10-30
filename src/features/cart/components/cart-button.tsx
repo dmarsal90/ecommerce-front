@@ -24,7 +24,7 @@ export async function CartButton({ locale, dict }: { locale: Locale; dict: Dicti
             ].replace('{count}', String(count))
           : dict.cart.open
       }
-      className="border-border hover:border-accent relative inline-flex size-10 items-center justify-center rounded-full border transition-colors"
+      className="border-border hover:border-accent-ink relative inline-flex size-10 items-center justify-center rounded-full border transition-colors"
     >
       <svg
         viewBox="0 0 24 24"

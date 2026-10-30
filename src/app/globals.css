@@ -8,8 +8,11 @@
   --foreground: #14121a;
   --muted: #5b5766;
   --border: #e3dfd8;
-  --accent: #2b4bff;
-  --accent-foreground: #ffffff;
+  /* Same lime as dark mode, a touch softer so it does not glare on the bone background; ink text sits on it. */
+  --accent: #b9de3c;
+  --accent-foreground: #14121a;
+  /* Lime is too pale to read as text or thin lines on light backgrounds, so text, links and borders use this deep olive. */
+  --accent-ink: #3f5a00;
   --sale: #e8362b;
   color-scheme: light;
 }
@@ -22,6 +25,7 @@
   --border: #2c2c35;
   --accent: #c6f135;
   --accent-foreground: #0f0f12;
+  --accent-ink: #c6f135;
   --sale: #ff7a6b;
   color-scheme: dark;
 }
@@ -34,6 +38,7 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-ink: var(--accent-ink);
   --color-sale: var(--sale);
   --font-sans: var(--font-body);
   --font-display: var(--font-heading);
@@ -49,7 +54,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-ink);
   outline-offset: 2px;
 }
 

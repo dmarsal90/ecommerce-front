@@ -8,7 +8,10 @@ export const collectionSchema = z.object({
   slug: z.string(),
   description: z.string().nullable(),
   products_count: z.number().optional(),
+  image: z.string().nullable().optional(),
 });
+
+export const bannerSchema = z.object({ image: z.string().nullable() });
 
 export type Brand = z.infer<typeof brandSchema>;
 export type Collection = z.infer<typeof collectionSchema>;

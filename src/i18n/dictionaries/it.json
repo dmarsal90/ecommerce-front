@@ -22,5 +22,13 @@
     "title": "Vesti la strada",
     "subtitle": "Moda e calzature con consegna rapida.",
     "cta": "Acquista ora"
+  },
+  "brands": {
+    "title": "Marchi in evidenza"
+  },
+  "collections": {
+    "title": "Collezioni",
+    "items_one": "{count} articolo",
+    "items_other": "{count} articoli"
   }
 }

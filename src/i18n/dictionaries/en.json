@@ -22,5 +22,13 @@
     "title": "Dress the street",
     "subtitle": "Fashion and footwear with fast delivery.",
     "cta": "Shop now"
+  },
+  "brands": {
+    "title": "Featured brands"
+  },
+  "collections": {
+    "title": "Collections",
+    "items_one": "{count} item",
+    "items_other": "{count} items"
   }
 }

@@ -22,5 +22,13 @@
     "title": "Veste a rua",
     "subtitle": "Moda e calçado com entrega rápida.",
     "cta": "Comprar agora"
+  },
+  "brands": {
+    "title": "Marcas em destaque"
+  },
+  "collections": {
+    "title": "Coleções",
+    "items_one": "{count} artigo",
+    "items_other": "{count} artigos"
   }
 }

@@ -4,9 +4,11 @@ import { GENDERS, toUrlParams, type ProductFilters } from '../domain/filters';
 import type { FilterOptions, Taxonomy } from '../domain/schemas';
 import { FiltersLive } from './filters-live';
 
-const control = 'border-border bg-surface rounded-control w-full border px-3 py-2';
+const control =
+  'border-border bg-background rounded-xl hover:border-foreground/40 focus:border-accent-ink w-full border px-3 py-2.5 text-sm transition-colors';
+const labelClass = 'text-muted block text-xs font-semibold tracking-wide uppercase';
 const chip =
-  'border-border peer-checked:bg-foreground peer-checked:text-background peer-checked:border-foreground peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent-ink flex cursor-pointer items-center gap-2 rounded-full border px-3 py-1 text-sm';
+  'border-border bg-background hover:border-foreground/40 peer-checked:bg-foreground peer-checked:text-background peer-checked:border-foreground peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent-ink flex min-h-9 cursor-pointer items-center justify-center gap-2 rounded-full border px-4 py-1 text-sm transition-colors select-none';
 
 function Select({
   name,
@@ -22,9 +24,9 @@ function Select({
   any: string;
 }) {
   return (
-    <label className="block space-y-1 text-sm">
-      <span>{label}</span>
-      <select name={name} defaultValue={value ?? ''} className={control}>
+    <label className="block space-y-1.5">
+      <span className={labelClass}>{label}</span>
+      <select name={name} defaultValue={value ?? ''} className={`${control} themed-select`}>
         <option value="">{any}</option>
         {options.map((o) => (
           <option key={o.value} value={o.value}>
@@ -50,7 +52,7 @@ function Checks({
   if (items.length === 0) return null;
   return (
     <fieldset className="space-y-2">
-      <legend className="text-sm">{legend}</legend>
+      <legend className={`${labelClass} mb-2`}>{legend}</legend>
       <div className="flex flex-wrap gap-2">
         {items.map((item) => (
           <label key={item.slug} className="relative">
@@ -65,7 +67,7 @@ function Checks({
               {item.swatch && (
                 <span
                   aria-hidden
-                  className="border-border size-3 rounded-full border"
+                  className="border-border size-4 rounded-full border"
                   style={{ background: item.swatch }}
                 />
               )}
@@ -75,6 +77,72 @@ function Checks({
         ))}
       </div>
     </fieldset>
+  );
+}
+
+/** Colours collapse into one row that shows what is selected; the swatches open on demand (no JS needed). */
+function ColourPicker({
+  legend,
+  selected,
+  items,
+}: {
+  legend: string;
+  selected: string[];
+  items: { slug: string; label: string; swatch?: string | null }[];
+}) {
+  if (items.length === 0) return null;
+  const chosen = items.filter((i) => selected.includes(i.slug));
+  return (
+    <details className="group border-border bg-background rounded-xl border">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center gap-3 px-3 text-sm select-none [&::-webkit-details-marker]:hidden">
+        <span className={labelClass}>{legend}</span>
+        {chosen.length > 0 && (
+          <span className="flex items-center gap-2">
+            <span className="flex -space-x-1">
+              {chosen.slice(0, 5).map((c) => (
+                <span
+                  key={c.slug}
+                  aria-hidden
+                  className="border-surface size-5 rounded-full border-2 ring-1 ring-black/15"
+                  style={{ background: c.swatch ?? undefined }}
+                />
+              ))}
+            </span>
+            <span className="text-muted truncate">{chosen.map((c) => c.label).join(', ')}</span>
+          </span>
+        )}
+        <svg
+          aria-hidden
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="text-muted ml-auto size-5 shrink-0 transition-transform group-open:rotate-180"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </summary>
+      <div className="border-border flex flex-wrap gap-3 border-t p-4">
+        {items.map((item) => (
+          <label key={item.slug} title={item.label} className="relative">
+            <input
+              type="checkbox"
+              name="color"
+              value={item.slug}
+              defaultChecked={selected.includes(item.slug)}
+              className="peer sr-only"
+            />
+            <span
+              className="ring-foreground/20 peer-checked:ring-accent-ink peer-checked:ring-offset-surface peer-focus-visible:outline-accent-ink block size-9 cursor-pointer rounded-full ring-1 transition-transform peer-checked:scale-110 peer-checked:ring-2 peer-checked:ring-offset-2 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 hover:scale-110"
+              style={{ background: item.swatch ?? undefined }}
+            />
+            <span className="sr-only">{item.label}</span>
+          </label>
+        ))}
+      </div>
+    </details>
   );
 }
 
@@ -107,85 +175,106 @@ export function FiltersForm({
       clearLabel={s.clear}
       clearHref={`/${locale}/shop`}
       hasActive={hasActiveFilters(filters)}
+      activeCount={countPanelFilters(filters)}
       top={
         <>
-          <label className="block space-y-1 text-sm">
-            <span>{s.search}</span>
+          <label className="relative block">
+            <span className="sr-only">{s.search}</span>
+            <svg
+              aria-hidden
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              className="text-muted pointer-events-none absolute top-1/2 left-4 size-5 -translate-y-1/2"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
             <input
               type="search"
               name="search"
+              placeholder={s.search}
               defaultValue={filters.search}
               maxLength={255}
-              className={control}
+              className={`${control} bg-surface rounded-full py-3 pr-4 pl-12 text-base`}
             />
           </label>
           {filters.sort !== 'newest' && <input type="hidden" name="sort" value={filters.sort} />}
         </>
       }
       panel={
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Select
-            name="category"
-            label={s.category}
-            value={filters.category}
-            options={toOptions(categories)}
-            any={s.any}
-          />
-          <Select
-            name="brand"
-            label={s.brand}
-            value={filters.brand}
-            options={toOptions(brands)}
-            any={s.any}
-          />
-          <Select
-            name="gender"
-            label={s.gender}
-            value={filters.gender}
-            options={GENDERS.map((g) => ({ value: g, label: s[g] }))}
-            any={s.any}
-          />
-          <label className="block space-y-1 text-sm">
-            <span>{s.min_price}</span>
-            <input
-              type="number"
-              name="min_price"
-              min={0}
-              step="any"
-              defaultValue={filters.minPrice}
-              className={control}
+        <div className="space-y-6">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Select
+              name="category"
+              label={s.category}
+              value={filters.category}
+              options={toOptions(categories)}
+              any={s.any}
             />
-          </label>
-          <label className="block space-y-1 text-sm">
-            <span>{s.max_price}</span>
-            <input
-              type="number"
-              name="max_price"
-              min={0}
-              step="any"
-              defaultValue={filters.maxPrice}
-              className={control}
+            <Select
+              name="brand"
+              label={s.brand}
+              value={filters.brand}
+              options={toOptions(brands)}
+              any={s.any}
             />
-          </label>
-          <label className="flex items-center gap-2 self-end pb-2 text-sm">
-            <input
-              type="checkbox"
-              name="on_sale"
-              value="1"
-              defaultChecked={filters.onSale}
-              className="size-4"
+            <Select
+              name="gender"
+              label={s.gender}
+              value={filters.gender}
+              options={GENDERS.map((g) => ({ value: g, label: s[g] }))}
+              any={s.any}
             />
-            {s.on_sale}
-          </label>
-          <div className="sm:col-span-2 lg:col-span-3">
-            <Checks
-              name="color"
+            <label className="block space-y-1.5">
+              <span className={labelClass}>{s.min_price}</span>
+              <input
+                type="number"
+                name="min_price"
+                min={0}
+                step="any"
+                inputMode="decimal"
+                defaultValue={filters.minPrice}
+                className={control}
+              />
+            </label>
+            <label className="block space-y-1.5">
+              <span className={labelClass}>{s.max_price}</span>
+              <input
+                type="number"
+                name="max_price"
+                min={0}
+                step="any"
+                inputMode="decimal"
+                defaultValue={filters.maxPrice}
+                className={control}
+              />
+            </label>
+            <label className="border-border bg-background rounded-control hover:border-foreground/40 flex min-h-11 cursor-pointer items-center justify-between gap-3 self-end border px-3 text-sm transition-colors">
+              {s.on_sale}
+              <input
+                type="checkbox"
+                name="on_sale"
+                value="1"
+                defaultChecked={filters.onSale}
+                className="peer sr-only"
+              />
+              <span
+                aria-hidden
+                className="bg-border peer-checked:bg-accent-ink peer-focus-visible:outline-accent-ink relative h-6 w-10 shrink-0 rounded-full transition-colors peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 after:absolute after:top-0.5 after:left-0.5 after:size-5 after:rounded-full after:bg-white after:shadow after:transition-transform peer-checked:after:translate-x-4"
+              />
+            </label>
+          </div>
+          <div className="border-border border-t pt-6">
+            <ColourPicker
               legend={s.colour}
               selected={filters.color}
               items={options.colors.map((c) => ({ slug: c.slug, label: c.value, swatch: c.color_code }))}
             />
           </div>
-          <div className="sm:col-span-2 lg:col-span-3">
+          <div className="border-border border-t pt-6">
             <Checks
               name="size"
               legend={s.size}
@@ -210,5 +299,16 @@ function hasActiveFilters(f: ProductFilters) {
     f.minPrice !== undefined ||
     f.maxPrice !== undefined ||
     f.search,
+  );
+}
+
+/** Filters inside the collapsible panel (search sits outside it); price counts once. */
+function countPanelFilters(f: ProductFilters) {
+  return (
+    [f.category, f.brand, f.gender, f.onSale, f.minPrice !== undefined || f.maxPrice !== undefined].filter(
+      Boolean,
+    ).length +
+    f.color.length +
+    f.size.length
   );
 }

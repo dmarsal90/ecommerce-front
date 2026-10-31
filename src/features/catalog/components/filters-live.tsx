@@ -34,6 +34,7 @@ export function FiltersLive({
   clearLabel,
   clearHref,
   hasActive,
+  activeCount,
 }: {
   action: string;
   /** The filters the server rendered the fields for; when it changes for any reason but this form, the fields reset. */
@@ -46,6 +47,7 @@ export function FiltersLive({
   clearLabel: string;
   clearHref: string;
   hasActive: boolean;
+  activeCount: number;
 }) {
   const navigate = useShopNavigate();
   const key = normalize(fieldsKey);
@@ -98,12 +100,42 @@ export function FiltersLive({
       <div key={`top-${version}`}>{top}</div>
 
       <details
-        className="bg-surface border-border rounded-panel border p-4"
+        className="group bg-surface border-border rounded-panel border"
         open={open}
         onToggle={(event) => setOpen(event.currentTarget.open)}
       >
-        <summary className="cursor-pointer font-medium">{summary}</summary>
-        <div key={`panel-${version}`} className="mt-4">
+        <summary className="flex min-h-14 cursor-pointer list-none items-center gap-3 px-5 font-semibold select-none [&::-webkit-details-marker]:hidden">
+          <svg
+            aria-hidden
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            className="size-5"
+          >
+            <path d="M4 6h16M7 12h10M10 18h4" />
+          </svg>
+          {summary}
+          {activeCount > 0 && (
+            <span className="bg-accent text-accent-foreground grid min-w-6 place-items-center rounded-full px-1.5 text-xs font-bold">
+              {activeCount}
+            </span>
+          )}
+          <svg
+            aria-hidden
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-muted ml-auto size-5 transition-transform group-open:rotate-180"
+          >
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </summary>
+        <div key={`panel-${version}`} className="border-border border-t p-5">
           {panel}
         </div>
       </details>
@@ -118,7 +150,10 @@ export function FiltersLive({
           </button>
         </noscript>
         {hasActive && (
-          <ShopLink href={clearHref} className="text-muted hover:text-foreground text-sm underline">
+          <ShopLink
+            href={clearHref}
+            className="border-border hover:border-foreground rounded-full border px-4 py-2 text-sm font-medium transition-colors"
+          >
             {clearLabel}
           </ShopLink>
         )}

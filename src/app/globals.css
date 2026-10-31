@@ -294,3 +294,60 @@ body {
 .group:hover .animate-marquee {
   animation-play-state: paused;
 }
+
+/* Filter dropdowns: a rounded, themed menu where the browser supports customizable selects (Chromium); elsewhere a
+   native select with the same closed look (the open list stays the browser's own). */
+.themed-select {
+  appearance: none;
+  background: var(--background)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a8794' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+    no-repeat right 0.75rem center / 1.25rem;
+  padding-right: 2.5rem;
+}
+
+@supports (appearance: base-select) {
+  .themed-select,
+  .themed-select::picker(select) {
+    appearance: base-select;
+  }
+
+  .themed-select {
+    background: var(--background);
+    padding-right: 0.75rem;
+  }
+
+  .themed-select::picker-icon {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%238a8794' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    transition: rotate 0.2s;
+  }
+
+  .themed-select:open::picker-icon {
+    rotate: 180deg;
+  }
+
+  .themed-select::picker(select) {
+    margin-top: 0.375rem;
+    padding: 0.375rem;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: var(--surface);
+    box-shadow: 0 12px 32px rgb(0 0 0 / 0.18);
+  }
+
+  .themed-select option {
+    padding: 0.625rem 0.75rem;
+    border-radius: 0.625rem;
+    cursor: pointer;
+  }
+
+  .themed-select option:hover,
+  .themed-select option:focus-visible {
+    background: var(--border);
+    outline: none;
+  }
+
+  .themed-select option:checked {
+    font-weight: 600;
+    background: color-mix(in srgb, var(--accent) 35%, transparent);
+  }
+}
